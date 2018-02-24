@@ -90,7 +90,7 @@
 <meta property="og:site_name" content="小布布">
 <meta property="og:description" content="总共七大步流程：  搭建Node.js 搭建Git 环境3.GitHub 注册和配置4.安装配置 Hexo5.关联 Hexo 与 GitHub Pages6.发表文章7.更换主题theme8.多PC同步管理博客    1. 搭建Node.js 在 Node.js 官网：https://nodejs.org/en/ 下载安装包 ,一路next即可. 然后打开命令提示符，输入1node -v、npm">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-24T11:19:27.029Z">
+<meta property="og:updated_time" content="2018-02-24T11:22:48.394Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CNN">
 <meta name="twitter:description" content="总共七大步流程：  搭建Node.js 搭建Git 环境3.GitHub 注册和配置4.安装配置 Hexo5.关联 Hexo 与 GitHub Pages6.发表文章7.更换主题theme8.多PC同步管理博客    1. 搭建Node.js 在 Node.js 官网：https://nodejs.org/en/ 下载安装包 ,一路next即可. 然后打开命令提示符，输入1node -v、npm">
@@ -322,15 +322,15 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git --version</span><br></pre></td></tr></table></figure>
 <p>出现版本号则说明 Git 环境配置成功，第二步完成！！！</p>
 </li>
-<li><p>[x] 3. GitHub 注册和配置</p>
-</li>
+</ul>
+<ul>
+<li style="list-style: none"><input type="checkbox" checked> 3. GitHub 注册和配置</li>
 <li>创建仓库：Repository name 使用自己的用户名，仓库名规则：<br>注意：yourname 必须是你的用户名： yourname/yourname.github.io</li>
-<li><p>访问 yourname.github.io，如果可以正常访问，那么 Github 的配置已经结束了。</p>
-</li>
-<li><p>[x] 4. 安装配置 Hexo</p>
-</li>
-<li><p>我是在D盘新建了一个hexo文件夹，在这个路径D\hexo下cmd,安装一下内容的</p>
-</li>
+<li>访问 yourname.github.io，如果可以正常访问，那么 Github 的配置已经结束了。</li>
+</ul>
+<ul>
+<li style="list-style: none"><input type="checkbox" checked> 4. 安装配置 Hexo</li>
+<li>我是在D盘新建了一个hexo文件夹，在这个路径D\hexo下cmd,安装一下内容的</li>
 <li><p>使用 npm 安装 Hexo：在命令行中输入</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
 <p>等待安装，有warn无所谓的啦</p>
@@ -367,8 +367,10 @@
 <p>配置 Deployment</p>
 <p>在_config.yml文件中，找到Deployment，然后按照如下修改，用户名改成你的：<br>需要注意的是：冒号后面记得空一格！<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># Deployment</span><br><span class="line">## Docs: https://hexo.io/docs/deployment.html</span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@github.com:onionwyc/bxm0927.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure></p>
 <ul>
-<li style="list-style: none"><input type="checkbox" checked> 6.发表文章 </li>
-<li>进入你的博客目录，右键选择 Git Bash Here 进入命令窗口，输入下面代码:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new &quot;新建文章名称&quot;    #新建文章</span><br></pre></td></tr></table></figure>
+<li><p>[x] 6.发表文章 </p>
+</li>
+<li><p>进入你的博客目录，右键选择 Git Bash Here 进入命令窗口，输入下面代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new &quot;新建文章名称&quot;    #新建文章</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>或者<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">进入你的博客目录，在 /source/_posts 文件夹下直接建立一个.md文件。</span><br></pre></td></tr></table></figure></p>
@@ -382,11 +384,13 @@
 <p>可以直接进入onionwyc.github.io或者去自己的github中查看，发表成功！开心~<br>==注意==</p>
 <ul>
 <li>部署到GitHub时，可能因为网速、被墙等原因，需要多次运行 hexo deploy  ；有时候可以运行 hexo clean 后在运行上述代码。</li>
-<li><p>.md文件不要用记事本打开，建议使用具有markdown语法的程序打开，比如：s ubline text、notepad++等。也可以使用在线markdown编辑器。</p>
-</li>
+<li>.md文件不要用记事本打开，建议使用具有markdown语法的程序打开，比如：s ubline text、notepad++等。也可以使用在线markdown编辑器。</li>
+</ul>
+<ul>
 <li><p>[x] 7.更换主题theme</p>
 </li>
-<li>官网下载新的人见人爱的next主题，官方主题库：<a href="https://hexo.io/themes/" target="_blank" rel="noopener">https://hexo.io/themes/</a></li>
+<li><p>官网下载新的人见人爱的next主题，官方主题库：<a href="https://hexo.io/themes/" target="_blank" rel="noopener">https://hexo.io/themes/</a></p>
+</li>
 <li>Hexo主题推荐使用 Next 为主题，请阅读 Next 的官方文档（ <a href="http://theme-next.iissnan.com/" target="_blank" rel="noopener">http://theme-next.iissnan.com/</a> ），5 分钟快速安装。</li>
 <li>将下载的压缩包解压至D:\hexo\onionwyc.github.io\themes下，并重名命为next</li>
 <li>将 D:\hexo\onionwyc.github.io 下的站点配置文件_config中的theme项修改为<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theme :next</span><br></pre></td></tr></table></figure>
@@ -400,8 +404,10 @@
 <p>再执行以下命令，部署服务端<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d -g</span><br></pre></td></tr></table></figure></p>
 <p>配完之后，就可以访问 <a href="https://onionwyc.github.io/atom.xml" target="_blank" rel="noopener">https://onionwyc.github.io/atom.xml</a> 和 <a href="https://onionwyc.github.io/sitemap.xml" target="_blank" rel="noopener">https://onionwyc.github.io/sitemap.xml</a> ，发现这两个文件已经成功生成了。<br>访问<a href="https://onionwyc.github.io" target="_blank" rel="noopener">https://onionwyc.github.io</a> 可以看到主题已经更改。</p>
 <ul>
-<li><p>[x] 8.多PC同步管理博客<br>很多人可能家里一台笔记本，公司一个台式机，想两个同时管理博客，同时达到备份的博客主题、文章、配置的目的。下面就介绍一下用github来备份博客并同步博客。</p>
-</li>
+<li style="list-style: none"><input type="checkbox" checked> 8.多PC同步管理博客</li>
+</ul>
+<p>很多人可能家里一台笔记本，公司一个台式机，想两个同时管理博客，同时达到备份的博客主题、文章、配置的目的。下面就介绍一下用github来备份博客并同步博客。</p>
+<ul>
 <li><p>A电脑备份博客内容到github<br>配置.gitignore文件。进入博客目录文件夹下，找到此文件，用sublime text     打开，在最后增加两行内容/.deploy_git和/public</p>
 <p>初始化仓库。<br>在博客根目录下，在git bash下依次执行git init和git remote add origin 为远程仓库地址。</p>
 <p>同步到远程仓库。<br>gitbash下依次执行以下命令</p>
