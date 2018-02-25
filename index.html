@@ -302,16 +302,15 @@
       
         
           
-            <p>#卷积神经网络过程详解–wangafufu</p>
-<p>标签（空格分隔）： DeepLearning</p>
-<p>#总共分四部分介绍：<br>本文主要目的，整体把握卷积神经网络的细节。<br>感觉网上介绍细节的很多，不知道整体，脾气不好的小孩，容易不开心惹，比如我。。吼吼</p>
+            <h1 id="卷积神经网络过程详解–wangafufu"><a href="#卷积神经网络过程详解–wangafufu" class="headerlink" title="卷积神经网络过程详解–wangafufu"></a>卷积神经网络过程详解–wangafufu</h1><p> DeepLearning</p>
+<h1 id="总共分四部分介绍："><a href="#总共分四部分介绍：" class="headerlink" title="总共分四部分介绍："></a>总共分四部分介绍：</h1><p>本文主要目的，整体把握卷积神经网络的细节。<br>感觉网上介绍细节的很多，不知道整体，脾气不好的小孩，容易不开心惹，比如我。。吼吼</p>
 <ul>
 <li style="list-style: none"><input type="checkbox" checked> 1. 特点：局部连接，权值共享。</li>
 <li style="list-style: none"><input type="checkbox" checked> 2. 前向传播计算：理解多通道卷积（卷积输入的长度、宽度、深度）卷积计算和池化。</li>
 <li style="list-style: none"><input type="checkbox" checked> 3. 误差项的反向传播：将损失函数先对输出层的输入值求导，得出最后一层的误差项，再利用梯度公式，寻找规律，根据最后一层的误差项反推出每一层的误差项，最后得到所有层的误差项。</li>
-<li style="list-style: none"><input type="checkbox" checked> 4. 权重更新：利用每层的误差项对权重w和偏置b进行更新——损失函数对每层的filter(w1,w2,,b)求导，来更新参数。<h1 id="具体如下："><a href="#具体如下：" class="headerlink" title="具体如下："></a>具体如下：</h1></li>
+<li style="list-style: none"><input type="checkbox" checked> 4. 权重更新：利用每层的误差项对权重w和偏置b进行更新——损失函数对每层的filter(w1,w2,,b)求导，来更新参数。</li>
 </ul>
-<h1 id="1-特点：局部连接，权值共享。"><a href="#1-特点：局部连接，权值共享。" class="headerlink" title="1. 特点：局部连接，权值共享。"></a>1. 特点：局部连接，权值共享。</h1><p>见下图。蓝色框图为全连接，每个s均与所有的x相连接，每个w值各异；红框图为添加’局部连接‘的示意图，每个s均与3个x相连接，减少了参数个数，例如s2拥有自己的一组权重 W2 =（w21,w22,w23）,W1 W2 W2 各异；在红框图基础上再添加’权值共享‘，则，得到W1=W2=W3，进一步减少了参数个数。<br><img src="http://img1.imgtn.bdimg.com/it/u=4073572021,2471421282&amp;fm=214&amp;gp=0.jpg" alt="我的头像"> </p>
+<h1 id="具体如下："><a href="#具体如下：" class="headerlink" title="具体如下："></a>具体如下：</h1><h1 id="1-特点：局部连接，权值共享。"><a href="#1-特点：局部连接，权值共享。" class="headerlink" title="1. 特点：局部连接，权值共享。"></a>1. 特点：局部连接，权值共享。</h1><p>见下图。蓝色框图为全连接，每个s均与所有的x相连接，每个w值各异；红框图为添加’局部连接‘的示意图，每个s均与3个x相连接，减少了参数个数，例如s2拥有自己的一组权重 W2 =（w21,w22,w23）,W1 W2 W2 各异；在红框图基础上再添加’权值共享‘，则，得到W1=W2=W3，进一步减少了参数个数。<br><img src="http://img1.imgtn.bdimg.com/it/u=4073572021,2471421282&amp;fm=214&amp;gp=0.jpg" alt="我的头像"> </p>
 <h1 id="2-前向传播–卷积运算"><a href="#2-前向传播–卷积运算" class="headerlink" title="2. 前向传播–卷积运算"></a>2. 前向传播–卷积运算</h1><p>学会计算参数个数，就明白卷积是怎么卷的了，参考我的 <a href="https://www.zybuluo.com/mdeditor#1015070" target="_blank" rel="noopener">多通道卷积</a> </p>
 <ul>
 <li><p>前向传播<br>深度为n=1，1 filter，所以卷积结果为1个feature map<br>[L层——k个filter(每个filter可以有m个卷积模板，即每个fliter的深度为m)——L+1层（k个featuer map ）]<br><img src="http://upload-images.jianshu.io/upload_images/2256672-273e3d9cf9dececb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/640" alt="我的头像"><br>深度为n=4。2 filter，所以卷积结果为2个featuer map。</p>
