@@ -231,6 +231,157 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/25/CNN推导/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="onionwyc">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小布布">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/02/25/CNN推导/" itemprop="url">CNN推导</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-25T11:04:14+08:00">
+                2018-02-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>#卷积神经网络过程详解–wangafufu</p>
+<p>标签（空格分隔）： DeepLearning</p>
+<p>#总共分四部分介绍：<br>本文主要目的，整体把握卷积神经网络的细节。<br>感觉网上介绍细节的很多，不知道整体，脾气不好的小孩，容易不开心惹，比如我。。吼吼</p>
+<ul>
+<li style="list-style: none"><input type="checkbox" checked> 1. 特点：局部连接，权值共享。</li>
+<li style="list-style: none"><input type="checkbox" checked> 2. 前向传播计算：理解多通道卷积（卷积输入的长度、宽度、深度）卷积计算和池化。</li>
+<li style="list-style: none"><input type="checkbox" checked> 3. 误差项的反向传播：将损失函数先对输出层的输入值求导，得出最后一层的误差项，再利用梯度公式，寻找规律，根据最后一层的误差项反推出每一层的误差项，最后得到所有层的误差项。</li>
+<li style="list-style: none"><input type="checkbox" checked> 4. 权重更新：利用每层的误差项对权重w和偏置b进行更新——损失函数对每层的filter(w1,w2,,b)求导，来更新参数。<h1 id="具体如下："><a href="#具体如下：" class="headerlink" title="具体如下："></a>具体如下：</h1>#1. 特点：局部连接，权值共享。<br>见下图。蓝色框图为全连接，每个s均与所有的x相连接，每个w值各异；红框图为添加’局部连接‘的示意图，每个s均与3个x相连接，减少了参数个数，例如s2拥有自己的一组权重 W2 =（w21,w22,w23）,W1 W2 W2 各异；在红框图基础上再添加’权值共享‘，则，得到W1=W2=W3，进一步减少了参数个数。<br><img src="http://img1.imgtn.bdimg.com/it/u=4073572021,2471421282&amp;fm=214&amp;gp=0.jpg" alt="我的头像"> </li>
+</ul>
+<h1 id="2-前向传播–卷积运算"><a href="#2-前向传播–卷积运算" class="headerlink" title="2. 前向传播–卷积运算"></a>2. 前向传播–卷积运算</h1><p>学会计算参数个数，就明白卷积是怎么卷的了，参考我的 <a href="https://www.zybuluo.com/mdeditor#1015070" target="_blank" rel="noopener">多通道卷积</a> </p>
+<ul>
+<li><p>前向传播<br>深度为n=1，1 filter，所以卷积结果为1个feature map<br>[L层——k个filter(每个filter可以有m个卷积模板，即每个fliter的深度为m)——L+1层（k个featuer map ）]<br><img src="http://upload-images.jianshu.io/upload_images/2256672-273e3d9cf9dececb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/640" alt="我的头像"><br>深度为n=4。2 filter，所以卷积结果为2个featuer map。</p>
+<p><img src="http://dataunion.org/wp-content/uploads/2015/03/91.png" alt="我的头像"></p>
+</li>
+</ul>
+<h1 id="3-误差反向传播"><a href="#3-误差反向传播" class="headerlink" title="3.  误差反向传播"></a>3.  误差反向传播</h1><p><strong>核心思想</strong>：<br>参照下图1(L、 L-1 层间的前向传播)，一步一步耐心的进行梯度的链式求导。<br>每层的误差项：对输入值求导——损失函数对该层中每个神经元的输入值分别求导，即得到每个神经元对应的误差项。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A[本层输入值a \ 激活函数f, L-1层  * ] --&gt;|*卷积*| B(卷积结果\激活函数f,L层  *) </span><br><span class="line">B --&gt; C(OUT)</span><br><span class="line">C --&gt; | *误差计算 *| D[损失函数]</span><br></pre></td></tr></table></figure>
+<pre><code>图1
+</code></pre><p><strong>总述：</strong><br>对于每一层，将损失函数对每一个神经元的输入值a求导，即得到每一个神经元输入值的误差。下图为L、 L-1 层的误差项，中间的filter为原filter旋转180度之后的结果。并且下图为卷积时步长为1，深度为1，滤波器个数为1时对应的误差项情况；步长，深度，滤波器个数增多时，误差项可以经过不太复杂的推广得到。<br>前向传播时：<strong><em>L-1层（D个feature map）——&gt; N个卷积核——&gt; L层（N个feature map）</em></strong><br>误差由L层向 L-1 层传递，传递方式:<br><strong>误差（L-1）= 反转后的filter*误差（L）</strong><br><strong><em>L-1层（D个sensitivity map）&lt;—— N个卷积核&lt;—— L层（N个sensitivity map）</em></strong><br>以此类推，计算出各层中每个神经元的误差项。<br>  <img src="http://upload-images.jianshu.io/upload_images/2256672-2fb37b0a3ff0e1f9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/640" alt="我的头像"></p>
+<p><strong>*引申</strong>：<br>当步长改变，深度增多，滤波器filter个数增多，L-1层的 feature map 个数增多时，要进行误差传递，就相应参考以上进行filter反转的卷积操作和多通道卷积过程;思考误差反向传播的过程时，注意每层的误差项个数与参数个数的对应相等。</p>
+<p><strong>引申1.</strong> 卷积步长为S时的误差传递<br>我们先来看看步长为S与步长为1的差别。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2256672-754f37eb7603e99f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/640" alt="我的头像"></p>
+<p>如上图，上面是步长为1时的卷积结果，下面是步长为2时的卷积结果。我们可以看出，因为步长为2，得到的feature map跳过了步长为1时相应的部分。因此，当我们反向计算误差项时，我们可以对步长为S的sensitivity map相应的位置进行补0，将其『还原』成步长为1时的sensitivity map，再进行滤波器反转卷积求误差。</p>
+<p><strong>引申2</strong>.  L-1层深度为D，L层有1个卷积核时的误差传递</p>
+<p>（1）当L-1层深度为D时（L-1层有D个feature map），filter的深度也必须为D（1个卷积核，这个卷积核对应D个卷积模板），L-1层的D个feature map分别只与对应的卷积模板进行卷积计算：<br><strong><em>L-1层（D个feature map）——&gt; 1个卷积核——&gt; L层（1个feature map）</em></strong><br>因此，<br>（2）反向计算误差项时，我们可以用这个卷积核对应D个卷积模板分别与L层的这一个sensitivity map进行卷积，得到L-1层的D个sensitivity map。如下图所示：<br><strong><em>L-1层（D个sensitivity map）&lt;—— 1个卷积核(D个卷积模板) &lt;—— L层（1个sensitivity map）</em></strong><br><img src="http://upload-images.jianshu.io/upload_images/2256672-af2da9701a03dc3c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/640" alt="我的头像"></p>
+<p><strong>引申3</strong>.  filter数量为N时的误差传递（区分filter的数量和深度）<br>     (1)  filter数量为N时，输出层的深度也为N，第n个filter卷积产生输出层的第n个feature map。<br><strong><em>L-1层（D个feature map）——&gt; N个卷积核filter(每个卷积核有D个卷积模板)——&gt; L层（N个feature map，，每个filter对应一个feature map）</em></strong><br>因此，<br>（2）反向计算误差项时，<br><strong><em>L-1层（D个sensitivity map）&lt;—— N个卷积核filter(每个卷积核有D个卷积模板) &lt;—— L层（N个sensitivity map）</em></strong><br>由于第L-1层每个加权输入都同时影响了第L层所有feature map的输出值，因此，反向计算误差项时，需要使用全导数公式。也就是，我们先使用第m个filter（D个卷积模板）与对应的第L层的第m个sensitivity map进行卷积，得到D个偏sensitivity map，称这D个偏sensitivity map为一组。依次用每个filter做这种卷积，就得到N组偏sensitivity map。最后在各组之间将N个偏sensitivity map 按对应filter、对应元素相加，即得到D个sensitivity map，就是最终的L-1层的那D个sensitivity map。</p>
+<p><strong>引申4.</strong>  <strong>池化层的误差传播</strong></p>
+<p>最大池化：最大元素对应位置误差原路返回，其余位置的为误差项为零，然后反向传回<br>均值池化：均分误差，然后反向传回</p>
+<h1 id="4-权重更新"><a href="#4-权重更新" class="headerlink" title="4. 权重更新"></a>4. 权重更新</h1><p> 损失函数对每层的filter中的每个w(w1,w2,,)求导，来更新参数：需要用到反向传播求出的误差项。梯度公式推导后，可以看出，求L层的w相对损失函数的梯度，实际是利用反向传播得到的L层的误差项结果、L-1层的输出值进行计算。</p>
+<p>题外话1：公式推导并不难，大家不要被吓到，只要牢记  图1 的结构，耐心利用链式求导法则，稍微调用一下高数知识即可~<br>题外话2：本菜菜在详细学习时，发现，公式推导不难，难的时整体把握。比如理解卷积的深度（多通道卷积）、反向传播时误差项与前向传播时权重的互相对应（毕竟，求误差项是给各个权重参数求的），利用求得的误差项进行参数更新。详细公式我在草纸上推导了，搬移公式实在太麻烦了，就不拷贝啦~<br>题外话3：通过本菜菜几天的研究，建议先整体把握，再去啃公式，不然容易看完不知道干什么的。</p>
+<h2 id="详细公式可以参考并非常感谢：此博客"><a href="#详细公式可以参考并非常感谢：此博客" class="headerlink" title="详细公式可以参考并非常感谢：此博客"></a>详细公式可以参考并非常感谢：<a href="https://www.zybuluo.com/hanbingtao/note/485480" target="_blank" rel="noopener">此博客</a></h2><hr>
+<p>作者 [onionwyc]<br>2018 年 2 月 20 日</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/24/Hexo+Github/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -305,7 +456,13 @@
             <p>总共七大步流程：</p>
 <ol>
 <li>搭建Node.js</li>
-<li>搭建Git 环境<br>3.GitHub 注册和配置<br>4.安装配置 Hexo<br>5.关联 Hexo 与 GitHub Pages<br>6.发表文章<br>7.更换主题theme<br>8.多PC同步管理博客</li>
+<li>搭建Git 环境</li>
+<li>GitHub 注册和配置</li>
+<li>安装配置 Hexo</li>
+<li>关联 Hexo 与 GitHub Pages</li>
+<li>发表文章 </li>
+<li>更换主题theme</li>
+<li>多PC同步管理博客</li>
 </ol>
 <ul>
 <li style="list-style: none"><input type="checkbox" checked> 1. 搭建Node.js</li>
@@ -321,14 +478,13 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git --version</span><br></pre></td></tr></table></figure>
 <p>出现版本号则说明 Git 环境配置成功，第二步完成！！！</p>
 </li>
-</ul>
-<ul>
-<li style="list-style: none"><input type="checkbox" checked> 3. GitHub 注册和配置</li>
+<li><p>[x] 3. GitHub 注册和配置</p>
+</li>
 <li>创建仓库：Repository name 使用自己的用户名，仓库名规则：<br>注意：yourname 必须是你的用户名： yourname/yourname.github.io</li>
-<li>访问 yourname.github.io，如果可以正常访问，那么 Github 的配置已经结束了。</li>
-</ul>
-<ul>
-<li style="list-style: none"><input type="checkbox" checked> 4. 安装配置 Hexo</li>
+<li><p>访问 yourname.github.io，如果可以正常访问，那么 Github 的配置已经结束了。</p>
+</li>
+<li><p>[x] 4. 安装配置 Hexo</p>
+</li>
 <li>我是在D盘新建了一个hexo文件夹，在这个路径D\hexo下cmd,安装一下内容的</li>
 <li><p>使用 npm 安装 Hexo：在命令行中输入</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
@@ -347,26 +503,31 @@
 </ul>
 <p>无法打开 localhost4000<br>不怕，执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo -server --save</span><br><span class="line">hexo s -p 3600</span><br></pre></td></tr></table></figure></p>
 <ul>
-<li>打开<a href="http://localhost:3600/" target="_blank" rel="noopener">http://localhost:3600/</a><br>成功出现 Hexo 界面！！激动啊</li>
-</ul>
-<ul>
-<li style="list-style: none"><input type="checkbox" checked> 5.关联 Hexo 与 GitHub Pages</li>
-</ul>
+<li><p>打开<a href="http://localhost:3600/" target="_blank" rel="noopener">http://localhost:3600/</a><br>成功出现 Hexo 界面！！激动啊</p>
+</li>
+<li><p>[x] 5. 关联 Hexo 与 GitHub Pages</p>
 <p>我们利用 SSH keys让本地git项目与远程的github联系起来！<br>右键选择 Git Bash Here, 中操作:</p>
-<p> 生成SSH keys<br> 输入你自己的邮箱地址<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;onionwuyc@gmail.com&quot;</span><br></pre></td></tr></table></figure></p>
-<p>  在回车中会提示你输入一个密码，这个密码会在你提交项目时使用，如果为空  的话提交项目时则不用输入，我们按回车不设置密码。</p>
-<p>  添加 SSH Key 到 GitHub<br>  打开 C:\Users\bxm09.ssh\id_rsa.pub，此文件里面内容为刚才生成的密钥，准确的复制这个文件的内容，粘贴到 <a href="https://github.com/settings/ssh" target="_blank" rel="noopener">https://github.com/settings/ssh</a> 的 new SSH key 中</p>
-<p>  测试<br>  可以输入下面的命令，看看设置是否成功，<a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>的部分不要修改：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure></p>
-<p>如果提示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hi defnngj You&apos;ve successfully authenticated, but GitHub does not provide shell access.</span><br></pre></td></tr></table></figure></p>
+<p>生成SSH keys<br>输入你自己的邮箱地址</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;onionwuyc@gmail.com&quot;</span><br></pre></td></tr></table></figure>
+<p>在回车中会提示你输入一个密码，这个密码会在你提交项目时使用，如果为空  的话提交项目时则不用输入，我们按回车不设置密码。</p>
+<p>添加 SSH Key 到 GitHub<br>打开 C:\Users\bxm09.ssh\id_rsa.pub，此文件里面内容为刚才生成的密钥，准确的复制这个文件的内容，粘贴到 <a href="https://github.com/settings/ssh" target="_blank" rel="noopener">https://github.com/settings/ssh</a> 的 new SSH key 中</p>
+<p>测试<br>可以输入下面的命令，看看设置是否成功，<a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>的部分不要修改：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+<p>如果提示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hi defnngj You&apos;ve successfully authenticated, but GitHub does not provide shell access.</span><br></pre></td></tr></table></figure>
 <p>说明你连接成功了</p>
-<p>如果是下面的反馈：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">The authenticity of host ‘github.com (207.97.227.239)’ can’t be established.</span><br><span class="line">RSA key fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48.</span><br><span class="line">Are you sure you want to continue connecting (yes/no)?</span><br></pre></td></tr></table></figure></p>
-<p>  不要紧张，输入yes就好，然后会看到：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hi aierui! You&apos;ve successfully authenticated, but GitHub does not provide shell access.</span><br></pre></td></tr></table></figure></p>
+<p>如果是下面的反馈：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">The authenticity of host ‘github.com (207.97.227.239)’ can’t be established.</span><br><span class="line">RSA key fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48.</span><br><span class="line">Are you sure you want to continue connecting (yes/no)?</span><br></pre></td></tr></table></figure>
+<p>不要紧张，输入yes就好，然后会看到：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hi aierui! You&apos;ve successfully authenticated, but GitHub does not provide shell access.</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 <p>配置Git个人信息</p>
 <p>  现在你已经可以通过 SSH 链接到 GitHub 了，还有一些个人信息需要完善的。<br>Git 会根据用户的名字和邮箱来记录提交。GitHub 也是用这些信息来做权限的处理，输入下面的代码进行个人信息的设置，把名称和邮箱替换成你自己的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;onionwyc&quot;</span><br><span class="line">git config --global user.email &quot;onionwuyc@gmail.com&quot;</span><br></pre></td></tr></table></figure></p>
 <p>配置 Deployment</p>
-<p>在_config.yml文件中，找到Deployment，然后按照如下修改，用户名改成你的：<br>需要注意的是：冒号后面记得空一格！<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># Deployment</span><br><span class="line">## Docs: https://hexo.io/docs/deployment.html</span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@github.com:onionwyc/bxm0927.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure></p>
+<p> 在_config.yml文件中，找到Deployment，然后按照如下修改，用户名改成你的：<br> 需要注意的是：冒号后面记得空一格！<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># Deployment</span><br><span class="line">## Docs: https://hexo.io/docs/deployment.html</span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@github.com:onionwyc/bxm0927.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure></p>
 <ul>
-<li><p>[x] 6.发表文章 </p>
+<li><p>[x] 6. 发表文章 </p>
 </li>
 <li><p>进入你的博客目录，右键选择 Git Bash Here 进入命令窗口，输入下面代码:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new &quot;新建文章名称&quot;    #新建文章</span><br></pre></td></tr></table></figure>
@@ -379,14 +540,14 @@
 </li>
 </ul>
 <p>错误处理：<br>在执行 hexo deploy 后,出现 error deployer not found:git 的错误处理<br>输入代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></p>
-<p>再次传送：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d -g</span><br></pre></td></tr></table></figure></p>
-<p>可以直接进入onionwyc.github.io或者去自己的github中查看，发表成功！开心~<br>==注意==</p>
+<p> 再次传送：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d -g</span><br></pre></td></tr></table></figure></p>
+<p> 可以直接进入onionwyc.github.io或者去自己的github中查看，发表成功！开心~<br>==注意==</p>
 <ul>
 <li>部署到GitHub时，可能因为网速、被墙等原因，需要多次运行 hexo deploy  ；有时候可以运行 hexo clean 后在运行上述代码。</li>
 <li>.md文件不要用记事本打开，建议使用具有markdown语法的程序打开，比如：s ubline text、notepad++等。也可以使用在线markdown编辑器。</li>
 </ul>
 <ul>
-<li><p>[x] 7.更换主题theme</p>
+<li><p>[x] 7. 更换主题theme</p>
 </li>
 <li><p>官网下载新的人见人爱的next主题，官方主题库：<a href="https://hexo.io/themes/" target="_blank" rel="noopener">https://hexo.io/themes/</a></p>
 </li>
@@ -405,7 +566,8 @@
 <ul>
 <li style="list-style: none"><input type="checkbox" checked> 8.多PC同步管理博客</li>
 </ul>
-<p>很多人可能家里一台笔记本，公司一个台式机，想两个同时管理博客，同时达到备份的博客主题、文章、配置的目的。下面就介绍一下用github来备份博客并同步博客。</p>
+<p>很多人可能家里一台笔记本，公司一个台式机，想两个同时管理博客，同时达到备份的博客主题、文章、配置的目的，【偷懒的方法：配置好环境，进入自己的Github,先克隆自己已经有的内容，再更新，一起发布】。</p>
+<p>下面就介绍一下用github来备份博客并同步博客。（参考的，还未亲自实现）</p>
 <ul>
 <li><p>A电脑备份博客内容到github<br>配置.gitignore文件。进入博客目录文件夹下，找到此文件，用sublime text     打开，在最后增加两行内容/.deploy_git和/public</p>
 <p>初始化仓库。<br>在博客根目录下，在git bash下依次执行git init和git remote add origin 为远程仓库地址。</p>
@@ -632,7 +794,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -645,7 +807,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
