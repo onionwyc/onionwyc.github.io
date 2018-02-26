@@ -97,7 +97,7 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2256672-2fb37b0a3ff0e1f9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/640">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2256672-754f37eb7603e99f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/640">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2256672-af2da9701a03dc3c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/640">
-<meta property="og:updated_time" content="2018-02-25T03:18:27.719Z">
+<meta property="og:updated_time" content="2018-02-26T01:36:03.559Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CNN推导">
 <meta name="twitter:description" content="卷积神经网络过程详解–wangafufu DeepLearning 总共分四部分介绍：本文主要目的，整体把握卷积神经网络的细节。感觉网上介绍细节的很多，不知道整体，脾气不好的小孩，容易不开心惹，比如我。。吼吼   1. 特点：局部连接，权值共享。  2. 前向传播计算：理解多通道卷积（卷积输入的长度、宽度、深度）卷积计算和池化。  3. 误差项的反向传播：将损失函数先对输出层的输入值求导，得出最后">
@@ -327,7 +327,7 @@
 </li>
 </ul>
 <h1 id="3-误差反向传播"><a href="#3-误差反向传播" class="headerlink" title="3.  误差反向传播"></a>3.  误差反向传播</h1><p><strong>核心思想</strong>：<br>参照下图1(L、 L-1 层间的前向传播)，一步一步耐心的进行梯度的链式求导。<br>每层的误差项：对输入值求导——损失函数对该层中每个神经元的输入值分别求导，即得到每个神经元对应的误差项。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A[本层输入值a \ 激活函数f, L-1层  * ] --&gt;|*卷积*| B(卷积结果\激活函数f,L层  *) </span><br><span class="line">B --&gt; C(OUT)</span><br><span class="line">C --&gt; | *误差计算 *| D[损失函数]</span><br></pre></td></tr></table></figure>
+<p> graphLR<br>    A[本层输入值a \ 激活函数f, L-1层  <em> ] –&gt;|</em>卷积<em>| B(卷积结果\激活函数f,L层  </em>)<br>    B –&gt; C(OUT)<br>    C –&gt; | <em>误差计算 </em>| D[损失函数]</p>
 <pre><code>图1
 </code></pre><p><strong> 总述： </strong></p>
 <p>对于每一层，将损失函数对每一个神经元的输入值a求导，即得到每一个神经元输入值的误差。下图为L、 L-1 层的误差项，中间的filter为原filter旋转180度之后的结果。并且下图为卷积时步长为1，深度为1，滤波器个数为1时对应的误差项情况；步长，深度，滤波器个数增多时，误差项可以经过不太复杂的推广得到。<br>前向传播时：<strong><em>L-1层（D个feature map）——&gt; N个卷积核——&gt; L层（N个feature map）</em></strong><br>误差由L层向 L-1 层传递，传递方式:<br><strong>误差（L-1）= 反转后的filter*误差（L）</strong><br><strong><em>L-1层（D个sensitivity map）&lt;—— N个卷积核&lt;—— L层（N个sensitivity map）</em></strong><br>以此类推，计算出各层中每个神经元的误差项。<br>  <img src="http://upload-images.jianshu.io/upload_images/2256672-2fb37b0a3ff0e1f9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/640" alt="我的头像"></p>
