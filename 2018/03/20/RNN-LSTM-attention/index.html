@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>RNN-LSTM-attention | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="【1】.RNNRNN 出现的目的是来处理序列数据的。RNN 之所以称为循环神经网路，是因为一个序列当前的输出与前面的输出有关。具体的表现形式为网络会对前面的信息进行记忆并应用于当前输出的计算中，即隐藏层之间的节点不再无连接而是有连接的，也就是说隐藏层的输入不仅包括输入层的输出还包括上一时刻隐藏层的输出。理论上，RNN 能够对任何长度的序列数据进行处理。但是在实践中，为了降低复杂性往往假设当前的状">
+<meta name="keywords" content="DeepLearning">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RNN-LSTM-attention">
+<meta property="og:url" content="http://yoursite.com/2018/03/20/RNN-LSTM-attention/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="【1】.RNNRNN 出现的目的是来处理序列数据的。RNN 之所以称为循环神经网路，是因为一个序列当前的输出与前面的输出有关。具体的表现形式为网络会对前面的信息进行记忆并应用于当前输出的计算中，即隐藏层之间的节点不再无连接而是有连接的，也就是说隐藏层的输入不仅包括输入层的输出还包括上一时刻隐藏层的输出。理论上，RNN 能够对任何长度的序列数据进行处理。但是在实践中，为了降低复杂性往往假设当前的状">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGSjGPH9TPdIl-Z5O3Y2UYs7RPU9DMzulIUXqbkoS66nvE-ri9xA">
+<meta property="og:image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDI-OYacpvKvZv-4jDcKl-wuOFTeFcKHrnY64ynt5mY6BHtjzu">
+<meta property="og:image" content="http://img.blog.csdn.net/20171101135036082">
+<meta property="og:image" content="http://img.blog.csdn.net/20171101113507440">
+<meta property="og:updated_time" content="2018-04-28T12:02:28.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="RNN-LSTM-attention">
+<meta name="twitter:description" content="【1】.RNNRNN 出现的目的是来处理序列数据的。RNN 之所以称为循环神经网路，是因为一个序列当前的输出与前面的输出有关。具体的表现形式为网络会对前面的信息进行记忆并应用于当前输出的计算中，即隐藏层之间的节点不再无连接而是有连接的，也就是说隐藏层的输入不仅包括输入层的输出还包括上一时刻隐藏层的输出。理论上，RNN 能够对任何长度的序列数据进行处理。但是在实践中，为了降低复杂性往往假设当前的状">
+<meta name="twitter:image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGSjGPH9TPdIl-Z5O3Y2UYs7RPU9DMzulIUXqbkoS66nvE-ri9xA">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-RNN-LSTM-attention" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/20/RNN-LSTM-attention/" class="article-date">
+  <time datetime="2018-03-20T01:20:42.000Z" itemprop="datePublished">2018-03-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      RNN-LSTM-attention
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<p>【1】.RNN<br>RNN 出现的目的是来处理序列数据的。<br>RNN 之所以称为循环神经网路，是因为一个序列当前的输出与前面的输出有关。具体的表现形式为网络会对前面的信息进行记忆并应用于当前输出的计算中，即隐藏层之间的节点不再无连接而是有连接的，也就是说隐藏层的输入不仅包括输入层的输出还包括上一时刻隐藏层的输出。<br>理论上，RNN 能够对任何长度的序列数据进行处理。但是在实践中，为了降低复杂性往往假设当前的状态只与前面的几个状态相关。</p>
+<p>【2】.CNN 和 RNN 的共享参数:</p>
+<p>我们需要记住的是，深度学习是怎么减少参数的，很大原因就是参数共享：<br>CNN 是在空间上共享参数；<br>RNN 是在时间上（顺序上）共享参数：</p>
+<p>【3】.RNN 几种架构</p>
+<p>然后来说说几种用 RNN 组成的常用架构，如下图：</p>
+<p><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGSjGPH9TPdIl-Z5O3Y2UYs7RPU9DMzulIUXqbkoS66nvE-ri9xA" alt="我的头像"><br>图1是普通的单个神经网络；<br>图2是把单一输入转化为序列输出；<br>图3是把序列输入转化为单个输出；<br>图4是把序列转化为序列，也就是 seq2seq 的做法；<br>图5是无时差的序列到序列转化，可以作为普通得语言模型。</p>
+<p>【4】几个比较重要的架构：</p>
+<p>（1）N to 1</p>
+<p>输入是一个序列，输出是一个单独的值而不是序列。这种结构通常用来处理序列分类问题。如输入一段文字判别它所属的类别，输入一个句子判断其情感倾向，输入一段文档并判断它的类别等等。具体如下图：</p>
+<p>（2） N to M</p>
+<p>这种结构又叫 Encoder-Decoder 模型，也可以称之为 Seq2Seq 模型。在实现问题中，我们遇到的大部分序列都是不等长的，如机器翻译中，源语言和目标语言的句子往往并没有相同的长度。而 Encoder-Decoder 结构先将输入数据编码成一个上下文向量 c，之后在通过这个上下文向量输出预测序列<br><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDI-OYacpvKvZv-4jDcKl-wuOFTeFcKHrnY64ynt5mY6BHtjzu" alt="我的头像"></p>
+<p>注意，很多时候只用上下文向量 C 效果并不是很好，而 attention 技术很大程度弥补了这点。<br>seq2seq 的应用的范围非常广泛，机器翻译，文本摘要，阅读理解，对话生成….，包括各种 attention，不同结构等</p>
+<p>[3]要了解深度学习中的注意力模型，就不得不先谈Encoder-Decoder框架，因为目前大多数注意力模型附着在Encoder-Decoder框架下，当然，其实注意力模型可以看作一种通用的思想，本身并不依赖于特定框架，这点需要注意.<br>如果把Attention机制从上文讲述例子中的Encoder-Decoder框架中剥离，并进一步做抽象，可以更容易看懂Attention机制的本质思想。</p>
+<p><img src="http://img.blog.csdn.net/20171101135036082" alt="我的头像"></p>
+<p>我们可以这样来看待Attention机制（参考图9）：将Source中的构成元素想象成是由一系列的&lt; Key,Value &gt;数据对构成，此时给定Target中的某个元素Query，通过计算Query和各个Key的相似性或者相关性，得到每个Key对应Value的权重系数，然后对Value进行加权求和，即得到了最终的Attention数值。所以本质上Attention机制是对Source中元素的Value值进行加权求和，而Query和Key用来计算对应Value的权重系数。即可以将其本质思想改写为如下公式：</p>
+<p><img src="http://img.blog.csdn.net/20171101113507440" alt="我的头像"></p>
+<p>参考<a href="https://www.leiphone.com/news/201709/8tDpwklrKubaecTa.html" target="_blank" rel="noopener">图解RNN变体</a> </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/03/20/RNN-LSTM-attention/" data-id="cjjxqd9qh0009fwujjdopclvi" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DeepLearning/">DeepLearning</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/05/08/ML系统认识/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          ML系统认识
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/03/03/机器学习中的数学基础/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">负梯度方向-函数值下降最快的方向</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DeepLearning/">DeepLearning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ML数学基础/">ML数学基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/其他折腾/">其他折腾</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/尝试折腾/">尝试折腾</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/机器学习基础/">机器学习基础</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/DeepLearning/" style="font-size: 20px;">DeepLearning</a> <a href="/tags/ML数学基础/" style="font-size: 15px;">ML数学基础</a> <a href="/tags/其他折腾/" style="font-size: 15px;">其他折腾</a> <a href="/tags/尝试折腾/" style="font-size: 15px;">尝试折腾</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/机器学习基础/" style="font-size: 10px;">机器学习基础</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/07/23/hello-world/">my onion</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/08/ML系统认识/">ML系统认识</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/20/RNN-LSTM-attention/">RNN-LSTM-attention</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/03/机器学习中的数学基础/">负梯度方向-函数值下降最快的方向</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/27/基本排序方法/">基本排序方法</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

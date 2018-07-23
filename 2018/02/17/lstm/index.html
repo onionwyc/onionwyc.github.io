@@ -5,19 +5,22 @@
   
 
   
-  <title>my onion | Hexo</title>
+  <title>lstm结构+参数个数计算 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="LSTM 个人认为明白如何计算一个网络的参数个数，对于理解一个网络的流程特别重要。  首先声明：  参数个数与steps无关 $h_t$的维度与$c_t$相同 两个门来控制状态 $c_t$ ，一个门来控制状态 $c_t$ 对输出的影响。 有四个交互的层，也就是拥有四组【w,b】参数；所以$总参数个数= (w的元素个数 + b的元素个数)*4$ 向量经过激活函数后，仍是一个向量：对向量中的每一个元">
+<meta name="keywords" content="DeepLearning">
 <meta property="og:type" content="article">
-<meta property="og:title" content="my onion">
-<meta property="og:url" content="http://yoursite.com/2018/07/23/hello-world/index.html">
+<meta property="og:title" content="lstm结构+参数个数计算">
+<meta property="og:url" content="http://yoursite.com/2018/02/17/lstm/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="LSTM 个人认为明白如何计算一个网络的参数个数，对于理解一个网络的流程特别重要。  首先声明：  参数个数与steps无关 $h_t$的维度与$c_t$相同 两个门来控制状态 $c_t$ ，一个门来控制状态 $c_t$ 对输出的影响。 有四个交互的层，也就是拥有四组【w,b】参数；所以$总参数个数= (w的元素个数 + b的元素个数)*4$ 向量经过激活函数后，仍是一个向量：对向量中的每一个元">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-23T03:42:21.744Z">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2256672-7ea82e4f1ac6cd75.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-05-09T01:21:50.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="my onion">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="lstm结构+参数个数计算">
+<meta name="twitter:description" content="LSTM 个人认为明白如何计算一个网络的参数个数，对于理解一个网络的流程特别重要。  首先声明：  参数个数与steps无关 $h_t$的维度与$c_t$相同 两个门来控制状态 $c_t$ ，一个门来控制状态 $c_t$ 对输出的影响。 有四个交互的层，也就是拥有四组【w,b】参数；所以$总参数个数= (w的元素个数 + b的元素个数)*4$ 向量经过激活函数后，仍是一个向量：对向量中的每一个元">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2256672-7ea82e4f1ac6cd75.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -64,10 +67,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-lstm" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/07/23/hello-world/" class="article-date">
-  <time datetime="2018-07-23T03:03:37.343Z" itemprop="datePublished">2018-07-23</time>
+    <a href="/2018/02/17/lstm/" class="article-date">
+  <time datetime="2018-02-17T02:20:59.000Z" itemprop="datePublished">2018-02-17</time>
 </a>
     
   </div>
@@ -78,7 +81,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      my onion
+      lstm结构+参数个数计算
     </h1>
   
 
@@ -86,32 +89,56 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <h1 id="LSTM"><a href="#LSTM" class="headerlink" title="LSTM"></a>LSTM</h1><hr>
+<p>个人认为明白如何计算一个网络的参数个数，对于理解一个网络的流程特别重要。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2256672-7ea82e4f1ac6cd75.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的头像"></p>
+<p>首先声明：</p>
+<ul>
+<li>参数个数与steps无关</li>
+<li>$h_t$的维度与$c_t$相同</li>
+<li>两个门来控制状态 $c_t$ ，一个门来控制状态 $c_t$ 对输出的影响。</li>
+<li>有四个交互的层，也就是拥有四组【w,b】参数；所以$总参数个数= (w的元素个数 + b的元素个数)*4$</li>
+<li>向量经过激活函数后，仍是一个向量：对向量中的每一个元</li>
+</ul>
+<p>从上图中可以看出，每个交互的层的操作大致是一样的<br>重点：计算出w,b的维度，就计算出参数个数了。</p>
+<p>素分别操作，主要都是<br>$$w\times[ ]+b$$<br>然后再激活函数，再与状态$c$作用，与参数有关的就是 $w\times[ ]+b$。</p>
+<p>因为输入输出向量的维度都是我们提前规定好的，假设维度是：</p>
+<p>$$ x:2024\times1,h维度=c维度=50\times1 $$</p>
+<p>所以，根据公式：已知 </p>
+<p>$$ W \times [h;x]_{（2014+50\times 1）}  + b =输出维度50\times 1 $$</p>
+<p>其中$[h;x]维度=（2014+50\times 1），w、b$ 的维度是想要推出的</p>
+<p>所以，可以根据矩阵运算中的维度对应倒推出 $w、b$ 的维度：</p>
+<p>$$ w: 50\times2074， b:50\times1 $$</p>
+<p>四组【w,b】,所以总参数：</p>
+<p>$$ 4\times（50\times2074+50）= 415000 $$</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/23/hello-world/" data-id="cjjxqd9qm000ifwujqkv1ksr5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/02/17/lstm/" data-id="cjjxqd9qk000dfwuji4dkwkko" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DeepLearning/">DeepLearning</a></li></ul>
+
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
+    <a href="/2018/02/24/Hexo+Github/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Hexo+Github+next+mathJax
+        
+      </div>
+    </a>
   
-    <a href="/2018/05/08/ML系统认识/" id="article-nav-older" class="article-nav-link-wrap">
+  
+    <a href="/2018/02/13/矩阵相关理解/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">ML系统认识</div>
+      <div class="article-nav-title">矩阵相关理解</div>
     </a>
   
 </nav>
