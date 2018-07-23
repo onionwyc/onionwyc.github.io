@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>基本排序方法 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="排序方法   堆排序  希尔排序  快速排序  插入排序  直接选择排序  冒泡排序  总结如下：  本篇博客所有排序为从小到大;python3。（尚未完成所有的排序。。。。） 一、冒泡排序 BubbleSort介绍： 冒泡排序，如果您想把大的放到最后，所以从第一位开始比较（每次都与下一位比它重复地走访过要排序的数列，一次比较两个元素，如果他们的顺序错误就把他们交换过来。） 步骤： 比较相邻的元素">
+<meta name="keywords" content="数据结构">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基本排序方法">
+<meta property="og:url" content="http://yoursite.com/2018/02/27/基本排序方法/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="排序方法   堆排序  希尔排序  快速排序  插入排序  直接选择排序  冒泡排序  总结如下：  本篇博客所有排序为从小到大;python3。（尚未完成所有的排序。。。。） 一、冒泡排序 BubbleSort介绍： 冒泡排序，如果您想把大的放到最后，所以从第一位开始比较（每次都与下一位比它重复地走访过要排序的数列，一次比较两个元素，如果他们的顺序错误就把他们交换过来。） 步骤： 比较相邻的元素">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://img.blog.csdn.net/20130801171021937?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvam51X3NpbWJh/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
+<meta property="og:image" content="http://wuchong.me/img/Insertion-sort-example-300px.gif">
+<meta property="og:updated_time" content="2018-03-14T02:34:16.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="基本排序方法">
+<meta name="twitter:description" content="排序方法   堆排序  希尔排序  快速排序  插入排序  直接选择排序  冒泡排序  总结如下：  本篇博客所有排序为从小到大;python3。（尚未完成所有的排序。。。。） 一、冒泡排序 BubbleSort介绍： 冒泡排序，如果您想把大的放到最后，所以从第一位开始比较（每次都与下一位比它重复地走访过要排序的数列，一次比较两个元素，如果他们的顺序错误就把他们交换过来。） 步骤： 比较相邻的元素">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20130801171021937?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvam51X3NpbWJh/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-基本排序方法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/02/27/基本排序方法/" class="article-date">
+  <time datetime="2018-02-27T06:22:58.000Z" itemprop="datePublished">2018-02-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      基本排序方法
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="排序方法"><a href="#排序方法" class="headerlink" title="排序方法"></a>排序方法</h1><hr>
+<ul>
+<li style="list-style: none"><input type="checkbox" checked> 堆排序</li>
+<li style="list-style: none"><input type="checkbox" checked> 希尔排序</li>
+<li style="list-style: none"><input type="checkbox" checked> 快速排序</li>
+<li style="list-style: none"><input type="checkbox" checked> 插入排序</li>
+<li style="list-style: none"><input type="checkbox" checked> 直接选择排序</li>
+<li style="list-style: none"><input type="checkbox" checked> 冒泡排序</li>
+</ul>
+<p>总结如下：</p>
+<p><img src="http://img.blog.csdn.net/20130801171021937?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvam51X3NpbWJh/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="示意图 "></p>
+<p>本篇博客所有排序为从小到大;python3。（尚未完成所有的排序。。。。）</p>
+<h1 id="一、冒泡排序-BubbleSort"><a href="#一、冒泡排序-BubbleSort" class="headerlink" title="一、冒泡排序 BubbleSort"></a>一、冒泡排序 BubbleSort</h1><p>介绍：</p>
+<p>冒泡排序，如果您想把大的放到最后，所以从第一位开始比较（每次都与下一位比它重复地走访过要排序的数列，一次比较两个元素，如果他们的顺序错误就把他们交换过来。）</p>
+<p>步骤：</p>
+<p>比较相邻的元素。如果第一个比第二个大，就交换他们两个。<br>对第0个到第n-1个数据做同样的工作。这时，最大的数就“浮”到了数组最后的位置上。<br>针对所有的元素重复以上的步骤，除了最后一个。<br>持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较。<br>源代码：(python实现)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># 最差版</span><br><span class="line">def BubbleSort1(array):</span><br><span class="line">    length = len(array)</span><br><span class="line">    if length == 0 :</span><br><span class="line">        return False</span><br><span class="line">    else :</span><br><span class="line">        for i in range(length):#总共需要遍历length次,第一次排完后，最大的被排到了末位</span><br><span class="line">            for j in range (1,length-i):</span><br><span class="line">                if array[j-1] &gt; array[j]:</span><br><span class="line">                    array[j-1],array[j] = array[j],array[j-1]</span><br><span class="line">        return array</span><br></pre></td></tr></table></figure></p>
+<p>不过针对上述代码还有两种优化方案。</p>
+<p>优化1：最差版，排序次数最多，如果中途就已经排好顺序，则没有必要在进行排序。</p>
+<p> #即（某一趟遍历如果没有数据交换，则说明已经排好序了，因此不用再进行迭代了，用一个标记记录这个状态即可。）<br>优化2：记录某次遍历时最后发生数据交换的位置，这个位置之后的数据显然已经有序，不用再排序了。 因此通过记录最后发生数据交换的位置就可以确定下次循环的范围了。</p>
+<p>优化版1、2详见这里</p>
+<h1 id="二、选择排序-SelectionSort"><a href="#二、选择排序-SelectionSort" class="headerlink" title="二、选择排序 SelectionSort"></a>二、选择排序 SelectionSort</h1><p>介绍：</p>
+<p>选择排序无疑是最简单直观的排序。它的工作原理如下。</p>
+<p>步骤：</p>
+<p>在未排序序列中找到最小（大）元素，存放到排序序列的起始位置。<br>再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾。<br>以此类推，直到所有元素均排序完毕。<br>源代码：(python实现)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"># 选择排序 SelectionSort</span><br><span class="line"># 在未排序序列中找到最小（大）元素，存放到排序序列的起始位置。</span><br><span class="line"># 再从剩余未排序元素中继续寻找最小（大）元素，然后放到 &quot;已排序序列&quot;的末尾。</span><br><span class="line"># 以此类推，直到所有元素均排序完毕</span><br><span class="line">#核心，开始时，锁定最小元素应该存放的位置：第0位。然后从余下元素中找出最小值，替换第0位</span><br><span class="line">#比如a=[2,5,1,3],a[0]=2,从[5,1,3]中找出最小的是第二位元素a[2]=1,交换a的第0元素与第2元素（而不是每次都与a[0]比较，得：【1，5，2，3】</span><br><span class="line">#=从小到大排列=============================================================================</span><br><span class="line">def SelectionSort(array):</span><br><span class="line">    length = len(array)</span><br><span class="line">    if length == 0 :</span><br><span class="line">        return False</span><br><span class="line">    else :</span><br><span class="line">        for i in range(0,length):</span><br><span class="line">            mini =i#此次遍历的min值在数组中的位置</span><br><span class="line">            for j in range(i+1,length):                                             </span><br><span class="line">                if array[j] &gt; array[mini]: </span><br><span class="line">                    mini=j #此次比较产生了更小的值，记录它的下标</span><br><span class="line">                array[j],array[mini] = array[mini],array[j]        </span><br><span class="line">        return array</span><br></pre></td></tr></table></figure></p>
+<h1 id="三、插入排序-InsertionSort"><a href="#三、插入排序-InsertionSort" class="headerlink" title="三、插入排序 InsertionSort"></a>三、插入排序 InsertionSort</h1><p>1.从第一个元素开始，该元素可以认为已经被排序<br>2.取出下一个元素，在已经排序的元素序列中从后向前扫描<br>3.如果被扫描的元素（已排序）大于新元素，将该元素后移一位<br>4.重复步骤3，直到找到已排序的元素小于或者等于新元素的位置<br>5.将新元素插入到该位置后<br>重复步骤2~5。</p>
+<p>操作过程示意图：</p>
+<p><img src="http://wuchong.me/img/Insertion-sort-example-300px.gif" alt="示意图 "></p>
+<pre><code>#插入排序的工作原理是，对于每个未排序数据，在已排序序列中从后向前扫描，找到相应位置并插入
+
+def InsertionSort(array):
+    length = len(array)
+    if length == 0 :
+        return False    
+    else :    
+        for i in range(1,length):#每个未排序数据
+            if array[i]&lt;array[i-1]:    
+                mini=array[i]#给array[i]找到合适的插入位置
+                index=i
+                for j in range (i-1,-1,-1):#和已排序序列比较
+                    if array[j] &gt; mini:
+                        array[j+1] = array[j]
+                        index = j      #目前最合适的插入位置               
+                    else :
+                        break
+                array[index]=mini#和已排序序列比较完了，将array[i]插入合适位置
+        return array
+</code></pre><h1 id="四、希尔排序-ShellSort"><a href="#四、希尔排序-ShellSort" class="headerlink" title="四、希尔排序 ShellSort"></a>四、希尔排序 ShellSort</h1><p>【1】介绍：</p>
+<p>希尔排序，也称递减增量排序算法，实质是分组插入排序。由 Donald Shell 于1959年提出。希尔排序是<code>非稳定排序算法</code>。</p>
+<p>希尔排序的基本思想是：将数组列在一个表中并对列分别进行插入排序，重复这过程，不过每次用更长的列（步长更长了，列数更少了）来进行。最后整个表就只有一列了。将数组转换至表是为了更好地理解这算法，算法本身还是使用数组进行排序。</p>
+<p>【2】例如</p>
+<p>假设有这样一组数[ 13 14 94 33 82 25 59 94 65 23 45 27 73 25 39 10 ]，如果我们以步长为5开始进行排序，我们可以通过将这列表放在有5列的表中来更好地描述算法，这样他们就应该看起来是这样：</p>
+<pre><code>13 14 94 33 82
+25 59 94 65 23
+45 27 73 25 39
+10
+</code></pre><p>然后我们对每列进行排序：</p>
+<pre><code>10 14 73 25 23
+13 27 94 33 39
+25 59 94 65 82
+45
+</code></pre><p>将上述四行数字，依序接在一起时我们得到：<code>[ 10 14 73 25 23 13 27 94 33 39 25 59 94 65 82 45 ]</code>。这时10已经移至正确位置了，然后再以3为步长进行排序：</p>
+<pre><code>10 14 73
+25 23 13
+27 94 33
+39 25 59
+94 65 82
+45
+</code></pre><p>排序之后变为：</p>
+<pre><code>10 14 13
+25 23 33
+27 25 59
+39 65 73
+45 94 82
+94
+</code></pre><p>最后以1步长进行排序（此时就是简单的插入排序了）。</p>
+<pre><code>
+
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/02/27/基本排序方法/" data-id="cjjxqbpre000dc4ujskfe4xg5" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/03/03/机器学习中的数学基础/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          负梯度方向-函数值下降最快的方向
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/02/25/CNN推导/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">CNN推导+反向传播</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DeepLearning/">DeepLearning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ML数学基础/">ML数学基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/其他折腾/">其他折腾</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/尝试折腾/">尝试折腾</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/DeepLearning/" style="font-size: 20px;">DeepLearning</a> <a href="/tags/ML数学基础/" style="font-size: 20px;">ML数学基础</a> <a href="/tags/其他折腾/" style="font-size: 10px;">其他折腾</a> <a href="/tags/尝试折腾/" style="font-size: 20px;">尝试折腾</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/07/23/hello-world/">my onion</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/03/机器学习中的数学基础/">负梯度方向-函数值下降最快的方向</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/27/基本排序方法/">基本排序方法</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/25/CNN推导/">CNN推导+反向传播</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/24/Hexo+Github/">Hexo+Github+next+mathJax</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

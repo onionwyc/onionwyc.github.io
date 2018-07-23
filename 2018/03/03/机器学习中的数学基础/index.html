@@ -5,19 +5,20 @@
   
 
   
-  <title>my onion | Hexo</title>
+  <title>负梯度方向-函数值下降最快的方向 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="将$ f(x_k+\delta)$泰勒级数展开：$$  \begin{matrix}   f(x_k+\delta)\approx f(x_k）+f^1(x_k) \cdot\delta+1/2f^2(x_k) \cdot\delta^2+…+(1/n!) \cdot f^n(x_k) \cdot\delta^n\  \end{matrix} \tag{1}$$因为式（1）中后几项的值相比前几项">
+<meta name="keywords" content="ML数学基础">
 <meta property="og:type" content="article">
-<meta property="og:title" content="my onion">
-<meta property="og:url" content="http://yoursite.com/2018/07/23/hello-world/index.html">
+<meta property="og:title" content="负梯度方向-函数值下降最快的方向">
+<meta property="og:url" content="http://yoursite.com/2018/03/03/机器学习中的数学基础/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="将$ f(x_k+\delta)$泰勒级数展开：$$  \begin{matrix}   f(x_k+\delta)\approx f(x_k）+f^1(x_k) \cdot\delta+1/2f^2(x_k) \cdot\delta^2+…+(1/n!) \cdot f^n(x_k) \cdot\delta^n\  \end{matrix} \tag{1}$$因为式（1）中后几项的值相比前几项">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-23T03:42:21.744Z">
+<meta property="og:updated_time" content="2018-03-03T09:59:02.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="my onion">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="负梯度方向-函数值下降最快的方向">
+<meta name="twitter:description" content="将$ f(x_k+\delta)$泰勒级数展开：$$  \begin{matrix}   f(x_k+\delta)\approx f(x_k）+f^1(x_k) \cdot\delta+1/2f^2(x_k) \cdot\delta^2+…+(1/n!) \cdot f^n(x_k) \cdot\delta^n\  \end{matrix} \tag{1}$$因为式（1）中后几项的值相比前几项">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -64,10 +65,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-机器学习中的数学基础" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/07/23/hello-world/" class="article-date">
-  <time datetime="2018-07-23T03:03:37.343Z" itemprop="datePublished">2018-07-23</time>
+    <a href="/2018/03/03/机器学习中的数学基础/" class="article-date">
+  <time datetime="2018-03-03T09:57:47.000Z" itemprop="datePublished">2018-03-03</time>
 </a>
     
   </div>
@@ -78,7 +79,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      my onion
+      负梯度方向-函数值下降最快的方向
     </h1>
   
 
@@ -86,32 +87,39 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <hr>
+<p>将$ f(x_k+\delta)$泰勒级数展开：<br>$$<br>  \begin{matrix}<br>   f(x_k+\delta)\approx f(x_k）+f^1(x_k) \cdot\delta+1/2f^2(x_k) \cdot\delta^2+…+(1/n!) \cdot f^n(x_k) \cdot\delta^n\<br>  \end{matrix} \tag{1}<br>$$<br>因为式（1）中后几项的值相比前几项来说比较小，比如看前三项，将前三项写为矢量形式：</p>
+<p>$$<br>  \begin{matrix}<br>   f(x_k+\delta)\approx f(x_k）+ \nabla^Tf(x_k) \cdot\delta+1/2\cdot\delta^T\nabla^2f(x_k) \cdot\delta\<br>  \end{matrix} \tag{2}<br>$$<br>看式（2）的前两项，可得：</p>
+<p>当 $\delta = \nabla^Tf(x_k)$，也就是对于向量来说，两者方向相同时，$\nabla^Tf(x_k) \cdot\delta$取得最大值。</p>
+<p>所以，$\delta$ 选择梯度方向，函数值最快上升；$\delta$ 选择负梯度方向，函数值最快下降。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/23/hello-world/" data-id="cjjxqbpr90005c4uj7zc0r05x" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/03/03/机器学习中的数学基础/" data-id="cjjxqbprc0008c4uj8bh9brhs" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ML数学基础/">ML数学基础</a></li></ul>
+
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
+    <a href="/2018/07/23/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          my onion
+        
+      </div>
+    </a>
   
-    <a href="/2018/03/03/机器学习中的数学基础/" id="article-nav-older" class="article-nav-link-wrap">
+  
+    <a href="/2018/02/27/基本排序方法/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">负梯度方向-函数值下降最快的方向</div>
+      <div class="article-nav-title">基本排序方法</div>
     </a>
   
 </nav>

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>矩阵相关理解 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="矩阵传达了两种信息： （1）静态信息一个矩阵其实同时包含两个信息 :   在哪个向量空间下描述事物，即坐标系信息，以及坐标值信息。  （2）动态信息一个矩阵表示一种线性变换；  矩阵的静态信息可以看作动态信息的矩阵经过变换后得来的。所以，一个矩阵可以拆分称几个矩阵相乘的形式。 一个 $m*n$ 的矩阵，即可看作一个线性映射：将所给矩阵从 $m$ 维空间映射到 $n$ 维空间。  1.线性变换【从动">
+<meta name="keywords" content="ML数学基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="矩阵相关理解">
+<meta property="og:url" content="http://yoursite.com/2018/02/13/矩阵相关理解/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="矩阵传达了两种信息： （1）静态信息一个矩阵其实同时包含两个信息 :   在哪个向量空间下描述事物，即坐标系信息，以及坐标值信息。  （2）动态信息一个矩阵表示一种线性变换；  矩阵的静态信息可以看作动态信息的矩阵经过变换后得来的。所以，一个矩阵可以拆分称几个矩阵相乘的形式。 一个 $m*n$ 的矩阵，即可看作一个线性映射：将所给矩阵从 $m$ 维空间映射到 $n$ 维空间。  1.线性变换【从动">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-03-14T02:32:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="矩阵相关理解">
+<meta name="twitter:description" content="矩阵传达了两种信息： （1）静态信息一个矩阵其实同时包含两个信息 :   在哪个向量空间下描述事物，即坐标系信息，以及坐标值信息。  （2）动态信息一个矩阵表示一种线性变换；  矩阵的静态信息可以看作动态信息的矩阵经过变换后得来的。所以，一个矩阵可以拆分称几个矩阵相乘的形式。 一个 $m*n$ 的矩阵，即可看作一个线性映射：将所给矩阵从 $m$ 维空间映射到 $n$ 维空间。  1.线性变换【从动">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-矩阵相关理解" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/02/13/矩阵相关理解/" class="article-date">
+  <time datetime="2018-02-13T13:21:57.000Z" itemprop="datePublished">2018-02-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      矩阵相关理解
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>矩阵传达了两种信息：</p>
+<p>（1）静态信息<br>一个矩阵其实同时包含两个信息 : </p>
+<ul>
+<li>在哪个向量空间下描述事物，即坐标系信息，以及坐标值信息。</li>
+</ul>
+<p>（2）动态信息<br>一个矩阵表示一种线性变换；</p>
+<ul>
+<li>矩阵的静态信息可以看作动态信息的矩阵经过变换后得来的。所以，一个矩阵可以拆分称几个矩阵相乘的形式。</li>
+<li>一个 $m*n$ 的矩阵，即可看作一个线性映射：将所给矩阵从 $m$ 维空间映射到 $n$ 维空间。</li>
+</ul>
+<h1 id="1-线性变换"><a href="#1-线性变换" class="headerlink" title="1.线性变换"></a>1.线性变换</h1><p>【从动态信息角度理解】</p>
+<p>【1】线性变换几何直观理解</p>
+<p>例如 ：旋转、推移，伸缩：</p>
+<ul>
+<li>直线变换后仍是直线</li>
+<li>直线比例保持不变</li>
+<li>原点变换后仍是原点</li>
+</ul>
+<p>【2】矩阵变换</p>
+<p>注意相乘的顺序：</p>
+<p>$$A_{线性变换后}=W \bullet A=线性变换\bullet原矩阵\tag{1}$$</p>
+<p>矩阵变换实际上是“基的变换”，见式（3）（4）。</p>
+<p>举例子，一个以原点为中心的正方形，基向量为 $i,j$ :<br> $$<br>  \begin{bmatrix}<br>   1    \\<br>   0<br>  \end{bmatrix} \<br>$$<br>\begin{bmatrix}<br>   1    \\<br>   0<br>  \end{bmatrix} </p>
+<p>然后逆时针旋转 $\theta$ ，即，旋转矩阵 $T_{rotate}=$<br>$$<br>  \begin{bmatrix}<br>   cos(\theta) &amp; -sin(\theta)  \\<br>   sin(\theta) &amp; cos(\theta)<br>  \end{bmatrix} \tag{2}<br>$$<br>则基向量变为 $i’,j‘$ ：<br>$$<br>  \begin{bmatrix}<br>   cos(\theta)    \\<br>   sin(\theta)<br>  \end{bmatrix} $$<br>  $$<br>\begin{bmatrix}<br>   -sin(\theta)   \\<br>   cos(\theta)<br>  \end{bmatrix}<br>  $$<br>也就是，旋转变换后的基向量就是旋转矩阵的列。————》列空间</p>
+<p>用公式表述上述变化：<br>$$ A=a \bullet i+b \bullet j=[i,j] \bullet [a;b]=基\bullet坐标 \tag{3}$$</p>
+<p>$$T_{rotate} \bullet A=T_{rotate} \bullet [i,j] \bullet [a;b]=[i’,j’] \bullet [a;b]=]A’ \tag{4}$$</p>
+<p> $$A’=a \bullet i’+b \bullet j’\tag{5}$$</p>
+<h1 id="2-行列式"><a href="#2-行列式" class="headerlink" title="2.行列式"></a>2.行列式</h1><p>[1] 【从动态信息角度理解】</p>
+<p>行列式的本质：行列式是线性变换的伸缩因子</p>
+<p>看上述的旋转，旋转矩阵 $T_{rotate}$的行列式的值为：<br> $$<br> \begin{matrix}<br>  cos(\theta) \bullet cos(\theta)-(sin(\theta) \bullet (-sin(\theta)))=1\<br>  \end{matrix} \tag{5}<br>  $$</p>
+<p>即旋转变换后正方形的面积不变。</p>
+<p>  $$| 行列式 | &gt; 1 , 对于图形有放大作用$$<br>$$| 行列式 |= 1 , 图形大小不变$$<br> $$0 &lt; | 行列式 | &lt; 1 , 对于图形有缩小作用 $$</p>
+<p>[2] 【从静态信息角度理解/看成一个单纯的矩阵】</p>
+<p>行列式值物理意义:</p>
+<p> $$   二阶矩阵A的行列式值 = 矩阵A的列组成的平行四边形的面积$$<br>  $$三阶矩阵A的行列式值 = 矩阵A的列组成的平行六面体的体积$$</p>
+<h1 id="3-秩"><a href="#3-秩" class="headerlink" title="3.秩:"></a>3.秩:</h1><p>（将一个矩阵看作线性变换来思考）</p>
+<p>秩 ：列空间的维度</p>
+<p> 数学家们定义，矩阵中的最大的不相关的向量的个数，就叫秩，即 列空间的维度。</p>
+<ul>
+<li><p>不在一条直线上的向量，即为不相关的向量。</p>
+</li>
+<li><p>【秩 = 列秩 = 行秩】 是恒成立的。所以直接把「列秩」称为「秩」也不算错误</p>
+</li>
+</ul>
+<p>$$  图像A——&gt;秩为0的线性变换——&gt;一个零维的点$$<br>  $$图像A——&gt;秩为1的线性变换——&gt;一维直线$$<br>$$图像A——&gt;秩为2的线性变换——&gt;二维图像$$</p>
+<p>所以,可以理解：</p>
+<p> $没有线性变换矩阵可以将一个点还原为原来的图像，所以秩为0的矩阵没有逆矩阵，即 不可逆 。$</p>
+<p>也就是：</p>
+<p>$如果B经过线性变换P之后，得到结果M;但 M 无法经过线性变换还原为B,则称矩阵P不可逆$。</p>
+<h1 id="4-低秩的意义"><a href="#4-低秩的意义" class="headerlink" title="4.低秩的意义"></a>4.低秩的意义</h1><p>形象地理解：</p>
+<p>低秩表征一种冗余程度，秩越低表示数据冗余性越大，因为用很少几个基就可以表达所有数据了，也就是说，可以用 $rank(A)$ 个线性无关的特征向量通过线性组合，基本地还原图片$A$ 的信息。</p>
+<p>一个矩阵是 low rank,说明它比它看起来更简单，矩阵信息量较低，实际坐标空间的维度就低，矩阵中大量内容线性相关，信息相关性高，则有规律，表示 $”可大幅压缩”$ ；</p>
+<p>如果矩阵内容大量线性相关，则该矩阵可以等价位少数几个向量多次组合而来，对于机器学习而言，这种信息 $“易建模（我的通俗理解，容易学习出函数f）”$。</p>
+<h1 id="5-矩阵的特征值理解"><a href="#5-矩阵的特征值理解" class="headerlink" title="5.矩阵的特征值理解"></a>5.矩阵的特征值理解</h1><p>此 <a href="https://www.bilibili.com/video/av6540378/" target="_blank" rel="noopener">视频</a> 非常形象，这个系列的都很好。看完就懂啦！</p>
+<p>矩阵乘法对应了一个变换，是把任意一个向量变成另一个方向或长度都大多不同的新向量。</p>
+<p>在这个变换的过程中，原向量主要发生旋转、伸缩的变化。</p>
+<p>如果矩阵对某一个向量或某些向量只发生伸缩变换，不对这些向量产生旋转的效果，那么这些向量就</p>
+<p>称为这个矩阵的特征向量，伸缩的比例就是特征值。</p>
+<h1 id="6-奇异值的理解"><a href="#6-奇异值的理解" class="headerlink" title="6.奇异值的理解"></a>6.奇异值的理解</h1><p>【1】奇异值的物理意义</p>
+<p>矩阵的奇异值是一个数学意义上的概念，一般由奇异值分解（即SVD分解，矩阵分解的一种）得到。</p>
+<p>下面考虑二维矩阵 $A$（一张人脸图像，像素为 $450 \bullet 333$）。</p>
+<p>将$A$进行奇异值分解，即分解为若干个秩一矩阵（秩为1的矩阵）之和：<br>$$<br> \begin{matrix}<br>  A=\sigma_1u_1v_1^T+ \sigma_2u_2v_2^T+…+\sigma_ru_rv_r^T   \<br>  \end{matrix} \tag{6}<br>  $$<br>其中等式右边每一项的系数 $\sigma$ 就是 奇异值 , $u$、$v$ 分别表示列向量，大小分别为 $450<em>1$ 和 $333</em>1$。注意，每一项 $uv^T$ 都是秩一矩阵。将奇异值大小顺序排列，假定式（6）是按奇异值大小顺序排列的。</p>
+<ul>
+<li><p>保留奇异值较大的几项（前几项），舍去奇异值较小的项（后几项），会得到和原图差别不大的图像。保留的项越多，结果和原图差距越小。对于含噪的，奇异值较小的项在很大概率上是噪点(在图像处理领域，应用于数据压缩和图像去噪)。</p>
+</li>
+<li><p>一般情况下，存储一张图片，并不需要存储所有的项，所以可以达到节省存储空间的目的。</p>
+</li>
+<li><p>假设保留前50项，结果已经很接近 $A$:$A$,$450 \bullet 333=149850$ ;<br>前50项,$(450+333+1) \bullet 50 = 39200$，存储量仅为前者的 20% 。</p>
+</li>
+<li><p>奇异值往往对应着矩阵中隐含的重要信息，且重要性和奇异值大小正相关。每个矩阵$A$都可以表示为一系列秩为 1 的“小矩阵”之和，而奇异值则衡量了这些“小矩阵”对于 $A$ 的权重。<br><a href="https://www.zhihu.com/question/22237507/answer/53804902" target="_blank" rel="noopener">知乎</a>郑宁的回答特别好。</p>
+</li>
+</ul>
+<p>【2】奇异值的几何意义</p>
+<p>   <a href="http://shartoo.github.io/SVD-decomponent/" target="_blank" rel="noopener">博客</a> 讲得特别好。<br>   未完待续 </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/02/13/矩阵相关理解/" data-id="cjjxqbprf000gc4uj7rosos5u" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ML数学基础/">ML数学基础</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/02/24/Hexo+Github/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Hexo+Github+next+mathJax
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/01/15/attention/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">attention</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DeepLearning/">DeepLearning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ML数学基础/">ML数学基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/其他折腾/">其他折腾</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/尝试折腾/">尝试折腾</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/DeepLearning/" style="font-size: 20px;">DeepLearning</a> <a href="/tags/ML数学基础/" style="font-size: 20px;">ML数学基础</a> <a href="/tags/其他折腾/" style="font-size: 10px;">其他折腾</a> <a href="/tags/尝试折腾/" style="font-size: 20px;">尝试折腾</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/07/23/hello-world/">my onion</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/03/机器学习中的数学基础/">负梯度方向-函数值下降最快的方向</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/27/基本排序方法/">基本排序方法</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/25/CNN推导/">CNN推导+反向传播</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/24/Hexo+Github/">Hexo+Github+next+mathJax</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

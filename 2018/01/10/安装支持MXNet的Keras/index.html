@@ -5,19 +5,20 @@
   
 
   
-  <title>my onion | Hexo</title>
+  <title>安装支持MXNet的Keras | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="之前看到过这篇文章，介绍DMLC给keras增加了MXNet支持，但是当时的版本是keras1.2.2，现在最新的已经到了kera2，现在想使用最新的Keras和MXnet咋办，试了以下方法，亲测可行 测试环境win10,Cuda9.0,cuDNNv7 步骤首先删除本机现有的keras,一般默认在c://user/xxx文件下面按照这个教程 mkdir keras git clone https:">
+<meta name="keywords" content="尝试折腾">
 <meta property="og:type" content="article">
-<meta property="og:title" content="my onion">
-<meta property="og:url" content="http://yoursite.com/2018/07/23/hello-world/index.html">
+<meta property="og:title" content="安装支持MXNet的Keras">
+<meta property="og:url" content="http://yoursite.com/2018/01/10/安装支持MXNet的Keras/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="之前看到过这篇文章，介绍DMLC给keras增加了MXNet支持，但是当时的版本是keras1.2.2，现在最新的已经到了kera2，现在想使用最新的Keras和MXnet咋办，试了以下方法，亲测可行 测试环境win10,Cuda9.0,cuDNNv7 步骤首先删除本机现有的keras,一般默认在c://user/xxx文件下面按照这个教程 mkdir keras git clone https:">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-23T03:42:21.744Z">
+<meta property="og:updated_time" content="2018-03-14T02:32:44.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="my onion">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="安装支持MXNet的Keras">
+<meta name="twitter:description" content="之前看到过这篇文章，介绍DMLC给keras增加了MXNet支持，但是当时的版本是keras1.2.2，现在最新的已经到了kera2，现在想使用最新的Keras和MXnet咋办，试了以下方法，亲测可行 测试环境win10,Cuda9.0,cuDNNv7 步骤首先删除本机现有的keras,一般默认在c://user/xxx文件下面按照这个教程 mkdir keras git clone https:">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -64,10 +65,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-安装支持MXNet的Keras" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/07/23/hello-world/" class="article-date">
-  <time datetime="2018-07-23T03:03:37.343Z" itemprop="datePublished">2018-07-23</time>
+    <a href="/2018/01/10/安装支持MXNet的Keras/" class="article-date">
+  <time datetime="2018-01-10T09:56:31.000Z" itemprop="datePublished">2018-01-10</time>
 </a>
     
   </div>
@@ -78,7 +79,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      my onion
+      安装支持MXNet的Keras
     </h1>
   
 
@@ -86,33 +87,59 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <p>之前看到过<a href="https://zhuanlan.zhihu.com/p/27172280" target="_blank" rel="noopener">这篇文章</a>，介绍DMLC给keras增加了MXNet支持，但是当时的版本是keras1.2.2，现在最新的已经到了kera2，现在想使用最新的Keras和MXnet咋办，试了以下方法，亲测可行</p>
+<p><strong>测试环境</strong><br>win10,Cuda9.0,cuDNNv7</p>
+<p><strong>步骤</strong><br>首先删除本机现有的keras,一般默认在<code>c://user/xxx</code>文件下面<br>按照<a href="https://github.com/deep-learning-tools/keras/wiki/Installation-Guide---Keras-with-MXNet-backend" target="_blank" rel="noopener">这个教程</a></p>
+<pre><code>mkdir keras
+git clone https://github.com/deep-learning-tools/keras ./keras/
+cd keras/
+</code></pre><p>检查是否为<em>keras2_mxnet_backend</em></p>
+<pre><code>git fetch
+git checkout keras2_mxnet_backend
+git pull
+</code></pre><p>然后执行<code>setup.py</code> 安装keras</p>
+<pre><code>python setup.py install
+</code></pre><p>接下来安装最新的MXNet</p>
+<pre><code>pip install mxnet-cu90
+</code></pre><p>然后import一下 ，很奇怪我的还是tf的后端，进入<code>.keras</code>文件夹，把原来这样的json文件</p>
+<pre><code>{
+&quot;floatx&quot;: &quot;float32&quot;,
+&quot;backend&quot;: &quot;tensorflow&quot;,
+&quot;image_data_format&quot;: &quot;channels_last&quot;,
+&quot;epsilon&quot;: 1e-07
+}
+</code></pre><p>改成</p>
+<pre><code>{
+&quot;floatx&quot;: &quot;float32&quot;,
+&quot;backend&quot;: &quot;mxnet&quot;,
+&quot;image_data_format&quot;: &quot;channels_first&quot;,
+&quot;epsilon&quot;: 1e-07
+}
+</code></pre><p>就可以了</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/23/hello-world/" data-id="cjjxqbpr90005c4uj7zc0r05x" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/01/10/安装支持MXNet的Keras/" data-id="cjjxqbpre000bc4ujs7jhtizy" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/尝试折腾/">尝试折腾</a></li></ul>
+
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
-  
-    <a href="/2018/03/03/机器学习中的数学基础/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">负梯度方向-函数值下降最快的方向</div>
+    <a href="/2018/01/11/git/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          git
+        
+      </div>
     </a>
+  
   
 </nav>
 

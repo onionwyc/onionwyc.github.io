@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo+Github+next+mathJax | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="想要畅通无阻的美滋滋的上传博客，包括文字内容和公式，完完整整总共十大步流程，亲自折腾过的总结：  搭建Node.js 搭建Git 环境 GitHub 注册和配置 安装配置 Hexo 关联 Hexo 与 GitHub Pages 发表文章  更换主题theme 多PC同步管理博客（可略过） 如何向Github提交代码 添加mathJax  1. 搭建Node.js 在 Node.js 官网：htt">
+<meta name="keywords" content="尝试折腾">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo+Github+next+mathJax">
+<meta property="og:url" content="http://yoursite.com/2018/02/24/Hexo+Github/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="想要畅通无阻的美滋滋的上传博客，包括文字内容和公式，完完整整总共十大步流程，亲自折腾过的总结：  搭建Node.js 搭建Git 环境 GitHub 注册和配置 安装配置 Hexo 关联 Hexo 与 GitHub Pages 发表文章  更换主题theme 多PC同步管理博客（可略过） 如何向Github提交代码 添加mathJax  1. 搭建Node.js 在 Node.js 官网：htt">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-03-11T06:27:40.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo+Github+next+mathJax">
+<meta name="twitter:description" content="想要畅通无阻的美滋滋的上传博客，包括文字内容和公式，完完整整总共十大步流程，亲自折腾过的总结：  搭建Node.js 搭建Git 环境 GitHub 注册和配置 安装配置 Hexo 关联 Hexo 与 GitHub Pages 发表文章  更换主题theme 多PC同步管理博客（可略过） 如何向Github提交代码 添加mathJax  1. 搭建Node.js 在 Node.js 官网：htt">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Hexo+Github" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/02/24/Hexo+Github/" class="article-date">
+  <time datetime="2018-02-24T09:29:17.000Z" itemprop="datePublished">2018-02-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Hexo+Github+next+mathJax
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<p>想要畅通无阻的美滋滋的上传博客，包括文字内容和公式，完完整整总共十大步流程，亲自折腾过的总结：</p>
+<ol>
+<li>搭建Node.js</li>
+<li>搭建Git 环境</li>
+<li>GitHub 注册和配置</li>
+<li>安装配置 Hexo</li>
+<li>关联 Hexo 与 GitHub Pages</li>
+<li>发表文章 </li>
+<li>更换主题theme</li>
+<li>多PC同步管理博客（可略过）</li>
+<li>如何向Github提交代码</li>
+<li>添加mathJax</li>
+</ol>
+<h1 id="1-搭建Node-js"><a href="#1-搭建Node-js" class="headerlink" title="1. 搭建Node.js"></a>1. 搭建Node.js</h1><ul>
+<li>在 Node.js 官网：<a href="https://nodejs.org/en/" target="_blank" rel="noopener">https://nodejs.org/en/</a> 下载安装包 ,一路next即可.</li>
+<li>然后打开命令提示符，输入<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node -v、npm -v，</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>出现版本号则说明 Node.js 环境配置成功！！！</p>
+<h1 id="2-搭建Git-环境"><a href="#2-搭建Git-环境" class="headerlink" title="2. 搭建Git 环境"></a>2. 搭建Git 环境</h1><p> 因为需要把本地的网页和文章等提交到 GitHub 上。 Git 是一款免费、开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目。</p>
+<ul>
+<li>在 Git 官网：<a href="https://git-scm.com/" target="_blank" rel="noopener">https://git-scm.com/</a> 下载安装包 ，安装。</li>
+<li><p>桌面右键，打开 Git Bush Here，输入 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git --version</span><br></pre></td></tr></table></figure>
+<p>出现版本号则说明 Git 环境配置成功，第二步完成！！！</p>
+</li>
+</ul>
+<h1 id="3-GitHub-注册和配置"><a href="#3-GitHub-注册和配置" class="headerlink" title="3.GitHub 注册和配置"></a>3.GitHub 注册和配置</h1><ul>
+<li>创建仓库：Repository name 使用自己的用户名，仓库名规则：<br>注意：yourname 必须是你的用户名： yourname/yourname.github.io</li>
+<li>访问 yourname.github.io，如果可以正常访问，那么 Github 的配置已经结束了。</li>
+</ul>
+<h1 id="4-安装配置-Hexo"><a href="#4-安装配置-Hexo" class="headerlink" title="4.安装配置 Hexo"></a>4.安装配置 Hexo</h1><ul>
+<li>我是在D盘新建了一个hexo文件夹，在这个路径D\hexo下cmd,安装一下内容的</li>
+<li><p>使用 npm 安装 Hexo：在命令行中输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
+<p>等待安装，有warn无所谓的啦</p>
+</li>
+<li><p>继续输入  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo version</span><br></pre></td></tr></table></figure>
+<p>出现版本信息，则安装OK</p>
+</li>
+<li><p>安装 Hexo 完成后，请执行下列命令来初始化 Hexo，用户名改成你的，Hexo 将会在指定文件夹中新建所需要的文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo init onionwyc.github.io</span><br><span class="line">cd onionwyc.github.io</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运行本地 Hexo 服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br><span class="line">或者</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>无法打开 localhost4000<br>不怕，执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo -server --save</span><br><span class="line">hexo s -p 3600</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>打开<a href="http://localhost:3600/" target="_blank" rel="noopener">http://localhost:3600/</a><br>成功出现 Hexo 界面！！激动啊</li>
+</ul>
+<h1 id="5-关联-Hexo-与-GitHub-Pages"><a href="#5-关联-Hexo-与-GitHub-Pages" class="headerlink" title="5.关联 Hexo 与 GitHub Pages"></a>5.关联 Hexo 与 GitHub Pages</h1><p>我们利用 SSH keys让本地git项目与远程的github联系起来！<br>右键选择 Git Bash Here, 中操作:</p>
+<p> 生成SSH keys<br> 输入你自己的邮箱地址<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;onionwuyc@gmail.com&quot;</span><br></pre></td></tr></table></figure></p>
+<p>  在回车中会提示你输入一个密码，这个密码会在你提交项目时使用，如果为空  的话提交项目时则不用输入，我们按回车不设置密码。</p>
+<p>  添加 SSH Key 到 GitHub<br>  打开 C:\Users\.ssh\id_rsa.pub，此文件里面内容为刚才生成的密钥，准确的复制这个文件的内容，粘贴到 <a href="https://github.com/settings/ssh" target="_blank" rel="noopener">https://github.com/settings/ssh</a> 的 new SSH key 中</p>
+<p>  测试<br>  可以输入下面的命令，看看设置是否成功，<a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>的部分不要修改：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure></p>
+<p>如果提示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hi defnngj You&apos;ve successfully authenticated, but GitHub does not provide shell access.</span><br></pre></td></tr></table></figure></p>
+<p>说明你连接成功了</p>
+<p>如果是下面的反馈：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">The authenticity of host ‘github.com (207.97.227.239)’ can’t be established.</span><br><span class="line">RSA key fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48.</span><br><span class="line">Are you sure you want to continue connecting (yes/no)?</span><br></pre></td></tr></table></figure></p>
+<p>  不要紧张，输入yes就好，然后会看到：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hi aierui! You&apos;ve successfully authenticated, but GitHub does not provide shell access.</span><br></pre></td></tr></table></figure></p>
+<p>配置Git个人信息</p>
+<p>  现在你已经可以通过 SSH 链接到 GitHub 了，还有一些个人信息需要完善的。<br>Git 会根据用户的名字和邮箱来记录提交。GitHub 也是用这些信息来做权限的处理，输入下面的代码进行个人信息的设置，把名称和邮箱替换成你自己的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;onionwyc&quot;</span><br><span class="line">git config --global user.email &quot;onionwuyc@gmail.com&quot;</span><br></pre></td></tr></table></figure></p>
+<p>配置 Deployment</p>
+<p>在_config.yml文件中，找到Deployment，然后按照如下修改，用户名改成你的：<br>需要注意的是：冒号后面记得空一格！<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># Deployment</span><br><span class="line">## Docs: https://hexo.io/docs/deployment.html</span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@github.com:onionwyc/onionwyc.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure></p>
+<h1 id="6-发表文章"><a href="#6-发表文章" class="headerlink" title="6.发表文章"></a>6.发表文章</h1><ul>
+<li>进入你的博客目录，右键选择 Git Bash Here 进入命令窗口，输入下面代码:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new &quot;新建文章名称&quot;    #新建文章</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>或者<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">进入你的博客目录，在 /source/_posts 文件夹下直接建立一个.md文件。</span><br></pre></td></tr></table></figure></p>
+<p> 此时，在方法1所述的文件夹里便有了 新建文章名称.md 文件。</p>
+<ul>
+<li>发布新建文章<br>在该博客项目文件夹下运行 Git Bash Here 命令窗口，依次输入如下代码：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">hexo generate    #生成更改</span><br><span class="line">hexo deploy    #将生成的更改部署到码云或者GitHub上</span><br><span class="line">或者</span><br><span class="line">先hexo g再执行hexo d布署</span><br><span class="line">或者</span><br><span class="line">也可使直接用hexo d -g</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>错误处理：<br>在执行 hexo deploy 后,出现 error deployer not found:git 的错误处理<br>输入代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></p>
+<p>再次传送：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d -g</span><br></pre></td></tr></table></figure></p>
+<p>可以直接进入onionwyc.github.io或者去自己的github中查看，发表成功！开心~<br>==注意==</p>
+<ul>
+<li>部署到GitHub时，可能因为网速、被墙等原因，需要多次运行 hexo deploy  ；有时候可以运行 hexo clean 后在运行上述代码。</li>
+<li>.md文件不要用记事本打开，建议使用具有markdown语法的程序打开，比如：s ubline text、notepad++等。也可以使用在线markdown编辑器。</li>
+<li>文章已经发表，又重新更改了，先执行 hexo clean,再 hexo d -g即可</li>
+</ul>
+<h1 id="7-更换主题theme"><a href="#7-更换主题theme" class="headerlink" title="7.更换主题theme"></a>7.更换主题theme</h1><ul>
+<li>官网下载新的人见人爱的next主题，官方主题库：<a href="https://hexo.io/themes/" target="_blank" rel="noopener">https://hexo.io/themes/</a></li>
+<li>Hexo主题推荐使用 Next 为主题，请阅读 Next 的官方文档（ <a href="http://theme-next.iissnan.com/" target="_blank" rel="noopener">http://theme-next.iissnan.com/</a> ），5 分钟快速安装。</li>
+<li>将下载的压缩包解压至D:\hexo\onionwyc.github.io\themes下，并重名命为next</li>
+<li>将 D:\hexo\onionwyc.github.io 下的站点配置文件_config中的theme项修改为<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theme :next</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s --debug</span><br></pre></td></tr></table></figure></p>
+<p>进行本地测试<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s -p 3600</span><br></pre></td></tr></table></figure></p>
+<p>然后就可以在<a href="http://localhost:3600/.中看到新主题" target="_blank" rel="noopener">http://localhost:3600/.中看到新主题</a><br>添加插件<br>添加 sitemap 和 feed 插件</p>
+<p>切换到你本地的 hexo 目录 ，在命令行窗口，输入以下命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-feed -save</span><br><span class="line">npm install hexo-generator-sitemap -save</span><br></pre></td></tr></table></figure></p>
+<p>修改hexo/onionwyc.github.io/ _config.yml，增加以下内容<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># Extensions</span><br><span class="line">Plugins:</span><br><span class="line">- hexo-generator-feed</span><br><span class="line">- hexo-generator-sitemap</span><br><span class="line">#Feed Atom</span><br><span class="line">feed:</span><br><span class="line">  type: atom</span><br><span class="line">  path: atom.xml</span><br><span class="line">  limit: 20</span><br><span class="line">#sitemap</span><br><span class="line">sitemap:</span><br><span class="line">  path: sitemap.xml</span><br></pre></td></tr></table></figure></p>
+<p>再执行以下命令，部署服务端<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d -g</span><br></pre></td></tr></table></figure></p>
+<p>配完之后，就可以访问 <a href="https://onionwyc.github.io/atom.xml" target="_blank" rel="noopener">https://onionwyc.github.io/atom.xml</a> 和 <a href="https://onionwyc.github.io/sitemap.xml" target="_blank" rel="noopener">https://onionwyc.github.io/sitemap.xml</a> ，发现这两个文件已经成功生成了。<br>访问<a href="https://onionwyc.github.io" target="_blank" rel="noopener">https://onionwyc.github.io</a> 可以看到主题已经更改。<br>每次更改主题配置中的内容后，执行下列命令即可：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo clean  #清除缓存</span><br><span class="line">hexo d -g   #部署到服务端</span><br></pre></td></tr></table></figure></p>
+<h1 id="8-多PC同步管理博客"><a href="#8-多PC同步管理博客" class="headerlink" title="8.多PC同步管理博客"></a>8.多PC同步管理博客</h1><p>很多人可能家里一台笔记本，公司一个台式机，想两个同时管理博客，同时达到备份的博客主题、文章、配置的目的。下面就介绍一下用github来备份博客并同步博客。</p>
+<ul>
+<li><p>A电脑备份博客内容到github<br>配置.gitignore文件。进入博客目录文件夹下，找到此文件，用sublime text     打开，在最后增加两行内容/.deploy_git和/public</p>
+<p>初始化仓库。<br>在博客根目录下，在git bash下依次执行git init和git remote add origin 为远程仓库地址。</p>
+<p>同步到远程仓库。<br>gitbash下依次执行以下命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add . #添加目录下所有文件</span><br><span class="line">git commit -m &quot;更新说明&quot; #提交并添加更新说明</span><br><span class="line">git push -u origin master #推送更新到远程仓库</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>B电脑拉下远程仓库文件<br>在B电脑上同样先安装好node、git、ssh、hexo，然后建好hexo文件夹，安装好插件，（然后选做：将备份到远程仓库的文件及文件夹删除），然后执行以下命令：</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br><span class="line">git remote add origin &lt;server&gt;</span><br><span class="line">git fetch --all</span><br><span class="line">git reset --hard origin/master</span><br></pre></td></tr></table></figure>
+<p>发布博客后同步<br>在B电脑发布完博客之后，记得将博客备份同步到远程仓库<br>执行以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">#可以用git master 查看更改内容</span><br><span class="line">git commit -m &quot;更新信息&quot;</span><br><span class="line">git push -u origin master  #以后每次提交可以直接git push</span><br></pre></td></tr></table></figure>
+<p>平时同步管理<br>每次想写博客时，先执行：git pull进行同步更新。发布完文章后同样按照上面的 发布博客后同步 同步到远程仓库。</p>
+<ul>
+<li>中文乱码<br>在 md 文件中写中文内容，发布出来后为乱码，原因是 md 的编码不对，将 md 文件另存为UTF-8编码的文件即可解决问题。</li>
+</ul>
+<p>主要参考并感谢 <a href="http://www.lovebxm.com/2017/05/30/buildBlog/#%E5%A4%9APC%E5%90%8C%E6%AD%A5%E7%AE%A1%E7%90%86%E5%8D%9A%E5%AE%A" target="_blank" rel="noopener">此作者</a> </p>
+<h1 id="9-如何向Github提交代码"><a href="#9-如何向Github提交代码" class="headerlink" title="9. 如何向Github提交代码"></a>9. 如何向Github提交代码</h1><ul>
+<li><p>在Github新建一个仓库：点击右上角的New repository新建仓库，输入仓库名称，然后创建仓库就可以了。</p>
+</li>
+<li><p>仓库创建好了之后，按右侧按钮复制SSH地址</p>
+</li>
+<li>一切准备就绪，接下来就是Git的事了，首先进入想要上传到GitHub的项目的文件夹下，创建好本地仓库，将想要上传的文件先添加到本地仓库中。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &quot;first commit&quot;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>接下来将本地仓库与远程仓库取得关联,使用git remote add origin + 此次的SSH。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin git@github.com:onionwyc/confusion_matrix.git</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>最后在通过以下命令将代码push到GitHub。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>接下来刷新GitHub就可以看到刚刚提交上去的代码了。</p>
+</li>
+</ul>
+<h1 id="10-添加mathJax"><a href="#10-添加mathJax" class="headerlink" title="10.添加mathJax"></a>10.添加mathJax</h1><p>注意！！开始不知道为什么，传送的公式全都无法显示，后经本菜菜多方查证，原来hexo不支持公式。。。</p>
+<p>原生hexo并不支持数学公式，需要安装插件 mathJax。<br>【1】 安装与配置mathJax</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-math --save</span><br></pre></td></tr></table></figure>
+<p>在站点配置文件 _config.yml 中添加：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">math:</span><br><span class="line">  engine: &apos;mathjax&apos; # or &apos;katex&apos;</span><br><span class="line">  mathjax:</span><br><span class="line">    # src: custom_mathjax_source</span><br><span class="line">    config:</span><br><span class="line">      # MathJax config</span><br></pre></td></tr></table></figure></p>
+<p>在 next 主题配置文件中 themes/next/_config.yml 中将 mathJax 设为 true:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># MathJax Support</span><br><span class="line">mathjax:</span><br><span class="line">  enable: true</span><br><span class="line">  per_page: false</span><br><span class="line">  cdn: //cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML</span><br></pre></td></tr></table></figure></p>
+<p>【2】关于公式和矩阵的语法:</p>
+<ul>
+<li>（1）矩阵<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$$</span><br><span class="line">  \begin&#123;bmatrix&#125;</span><br><span class="line">   cos(\theta) &amp; -sin(\theta)  \\\\      #注意，hexo写矩阵时只用两个斜杠，会出错，虽然mardown中是正确的。</span><br><span class="line">   sin(\theta) &amp; cos(\theta)</span><br><span class="line">  \end&#123;bmatrix&#125; \tag&#123;2&#125;</span><br><span class="line">$$</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>显示为：<br>$$<br>  \begin{bmatrix}<br>   cos(\theta) &amp; -sin(\theta)  \\<br>   sin(\theta) &amp; cos(\theta)<br>  \end{bmatrix} \tag{2}<br>$$</p>
+<ul>
+<li>（2）独占一行的公式<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$$ A=a \bullet i+b \bullet j=[i,j] \bullet [a;b]=基\bullet坐标 \tag&#123;3&#125;$$</span><br><span class="line">#去掉\tag&#123; &#125;，则不显示标签</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>显示为：<br>$$ A=a \bullet i+b \bullet j=[i,j] \bullet [a;b]=基\bullet坐标 \tag{3}$$<br>注意，如何偷懒将乘号 $ \bullet$ (代码为 \bullet )写为 * ，整个公式将惨遭毁灭，我就是在这里卡住了很久，所以，规范符号用法，用什么查什么。</p>
+<ul>
+<li>（3） 行间的公式<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">我们都知道 $9 = 3 \times 3$</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>显示为：<br>我们都知道 $9 = 3 \times 3$</p>
+<p>更多语法，我是参考的<a href="http://www.domuse.com/markdown-and-latex-equation-handbook.html" target="_blank" rel="noopener">流程图语法参考</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/02/24/Hexo+Github/" data-id="cjjxqbpr50001c4ujrilofhts" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/尝试折腾/">尝试折腾</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/02/25/CNN推导/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          CNN推导+反向传播
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/02/13/矩阵相关理解/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">矩阵相关理解</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DeepLearning/">DeepLearning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ML数学基础/">ML数学基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/其他折腾/">其他折腾</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/尝试折腾/">尝试折腾</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/DeepLearning/" style="font-size: 20px;">DeepLearning</a> <a href="/tags/ML数学基础/" style="font-size: 20px;">ML数学基础</a> <a href="/tags/其他折腾/" style="font-size: 10px;">其他折腾</a> <a href="/tags/尝试折腾/" style="font-size: 20px;">尝试折腾</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/07/23/hello-world/">my onion</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/03/机器学习中的数学基础/">负梯度方向-函数值下降最快的方向</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/27/基本排序方法/">基本排序方法</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/25/CNN推导/">CNN推导+反向传播</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/24/Hexo+Github/">Hexo+Github+next+mathJax</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
