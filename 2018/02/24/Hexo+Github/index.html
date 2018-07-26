@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="very cool">
 <meta property="og:description" content="想要畅通无阻的美滋滋的上传博客，包括文字内容和公式，完完整整总共十大步流程，亲自折腾过的总结：  搭建Node.js 搭建Git 环境 GitHub 注册和配置 安装配置 Hexo 关联 Hexo 与 GitHub Pages 发表文章  更换主题theme 多PC同步管理博客（可略过） 如何向Github提交代码 添加mathJax 上传图片  1. 搭建Node.js 在 Node.js 官">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-26T01:40:04.832Z">
+<meta property="og:updated_time" content="2018-07-26T01:53:20.887Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo+Github+next+mathJax">
 <meta name="twitter:description" content="想要畅通无阻的美滋滋的上传博客，包括文字内容和公式，完完整整总共十大步流程，亲自折腾过的总结：  搭建Node.js 搭建Git 环境 GitHub 注册和配置 安装配置 Hexo 关联 Hexo 与 GitHub Pages 发表文章  更换主题theme 多PC同步管理博客（可略过） 如何向Github提交代码 添加mathJax 上传图片  1. 搭建Node.js 在 Node.js 官">
@@ -470,11 +470,12 @@
 <p>显示为：<br>我们都知道 $9 = 3 \times 3$</p>
 <p>更多语法，我是参考的<a href="http://www.domuse.com/markdown-and-latex-equation-handbook.html" target="_blank" rel="noopener">流程图语法参考</a></p>
 <h1 id="11-上传图片"><a href="#11-上传图片" class="headerlink" title="11. 上传图片"></a>11. 上传图片</h1><p>(1) 把主页配置文件_config.yml 里的post_asset_folder:这个选项设置为true</p>
-<p>(2) 在你的hexo目录下执行这样一句话npm install hexo-asset-image –save，这是下载安装一个可以上传本地图片的插件，来自dalao：dalao的git</p>
+<p>(2) 在你的hexo目录下执行这样一句话npm install <a href="https://github.com/CodeFalling/hexo-asset-image" target="_blank" rel="noopener">https://github.com/CodeFalling/hexo-asset-image</a> –save，这是下载安装一个可以上传本地图片的插件，来自dalao：dalao的git</p>
 <p>(3) 等待一小段时间后，再运行hexo n “xxxx”来生成md博文时，/source/_posts文件夹内除了xxxx.md文件还有一个同名的文件夹</p>
-<p>(4) 最后在xxxx.md中想引入图片时，先把图片复制到xxxx这个文件夹中，然后只需要在xxxx.md中按照markdown的格式引入图片：</p>
-<p>  <code>! [你想输入的替代文字](xxxx/图片名.jpg)</code> </p>
-<p>注意： xxxx是这个md文件的名字，也是同名文件夹的名字。只需要有文件夹名字即可，不需要有什么绝对路径。你想引入的图片就只需要放入xxxx这个文件夹内就好了，很像引用相对路径<br>(5)  最后检查一下，hexo g生成页面后，进入public\2017\02\26\index.html文件中查看相关字段，<br>可以发现，html标签内的语句是 <code>&lt;img src=&quot;2017/02/26/xxxx/图片名.jpg&quot;&gt;</code> ，<br>而不是<code>&lt;img src=&quot;xxxx/图片名.jpg&gt;</code> 。这很重要，关乎你的网页是否可以真正加载你想插入的图片。</p>
+<p>(4) 最后在xxxx.md中想引入图片时，先把图片复制到xxxx这个文件夹中，然后只需要在xxxx.md中按照格式引入图片：</p>
+
+<p>OK!!!!!!!</p>
+<p>(5)  最后检查一下，hexo g生成页面后，进入public\2018\07\26\index.html文件中查看相关字段，<br>可以发现，html标签内的语句是 <code>&lt;img src=&quot;\2018\07\26/xxxx/图片名.jpg&quot;&gt;</code> ，<br>而不是<code>&lt;img src=&quot;xxxx/图片名.jpg&gt;</code> 。这很重要，关乎你的网页是否可以真正加载你想插入的图片。</p>
 
       
     </div>
