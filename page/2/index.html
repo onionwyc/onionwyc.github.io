@@ -239,6 +239,159 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/14/红黑树/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="onion">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://gss0.baidu.com/-Po3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/5882b2b7d0a20cf49a3075d87e094b36acaf9911.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="very cool">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/02/14/红黑树/" itemprop="url">红黑树</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-14T13:08:16+08:00">
+                2018-02-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="红黑树"><a href="#红黑树" class="headerlink" title="红黑树"></a>红黑树</h1><hr>
+<h1 id="什么是红黑树"><a href="#什么是红黑树" class="headerlink" title="什么是红黑树"></a>什么是红黑树</h1><p>红黑树本质上是一种二叉查找树，但它在二叉查找树的基础上额外添加了一个标记（颜色），同时具有一定的规则。这些规则使红黑树保证了一种平衡，插入、删除、查找的最坏时间复杂度都为 O(logn)。</p>
+<p>它的统计性能要好于平衡二叉树（AVL树），因此，红黑树在很多地方都有应用。比如在 Java 集合框架中，很多部分(HashMap, TreeMap, TreeSet 等)都有红黑树的应用，这些集合均提供了很好的性能。</p>
+<p>由于 TreeMap 就是由红黑树实现的，因此本文将使用 TreeMap 的相关操作的代码进行分析、论证。</p>
+<p>黑色高度<br>从根节点到叶节点的路径上黑色节点的个数，叫做树的黑色高度。</p>
+<h1 id="红黑树的-5-个特性"><a href="#红黑树的-5-个特性" class="headerlink" title="红黑树的 5 个特性"></a>红黑树的 5 个特性</h1><p><img src="https://user-gold-cdn.xitu.io/2016/11/29/63e3f88d8c6103651a967d5ab9decc9c?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="我的头像"></p>
+<p>红黑树在原有的二叉查找树基础上增加了如下几个要求：</p>
+<p>每个节点要么是红色，要么是黑色；<br>根节点永远是黑色的；<br>所有的叶节点都是是黑色的（注意这里说叶子节点其实是上图中的 NIL 节点）；<br>每个红色节点的两个子节点一定都是黑色；<br>从任一节点到其子树中每个叶子节点的路径都包含相同数量的黑色节点；</p>
+<ul>
+<li><p>注意：<br>性质 3 中指定红黑树的每个叶子节点都是空节点，而且并叶子节点都是黑色。但 Java 实现的红黑树将使用 null 来代表空节点，因此遍历红黑树时将看不到黑色的叶子节点，反而看到每个叶子节点都是红色的。</p>
+<p>性质 4 的意思是：从每个根到节点的路径上不会有两个连续的红色节点，但黑色节点是可以连续的。<br>因此若给定黑色节点的个数 N，最短路径的情况是连续的 N 个黑色，树的高度为 N - 1;最长路径的情况为节点红黑相间，树的高度为 2(N - 1) 。</p>
+<p>性质 5 是成为红黑树最主要的条件，后序的插入、删除操作都是为了遵守这个规定。</p>
+<p>红黑树并不是标准平衡二叉树，它以性质 5  作为一种平衡方法，使自己的性能得到了提升。</p>
+</li>
+</ul>
+<h1 id="红黑树的左旋右旋"><a href="#红黑树的左旋右旋" class="headerlink" title="红黑树的左旋右旋"></a>红黑树的左旋右旋</h1><p><img src="https://user-gold-cdn.xitu.io/2016/11/29/45e6629fc939b2140fa30b885a0db6bf?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="我的头像"></p>
+<p>红黑树的左右旋是比较重要的操作，左右旋的目的是调整红黑节点结构，转移黑色节点位置，使其在进行插入、删除后仍能保持红黑树的 5 条性质。</p>
+<p>比如 X 左旋(右图转成左图)的结果，是让在 Y 左子树的黑色节点跑到 X 右子树去。</p>
+<p>#红黑树的平衡插入<br>红黑树的插入主要分两步：</p>
+<p>首先和二叉查找树的插入一样，查找、插入<br>然后调整结构，保证满足红黑树状态<br>对结点进行重新着色<br>以及对树进行相关的旋转操作<br>红黑树的插入在二叉查找树插入的基础上，为了重新恢复平衡，继续做了插入修复操作</p>
+<p>插入后调整红黑树结构<br>红黑树的第 5 条特征规定，任一节点到它子树的每个叶子节点的路径中都包含同样数量的黑节点。也就是说当我们往红黑树中插入一个黑色节点时，会违背这条特征。</p>
+<p>同时第 4 条特征规定红色节点的左右孩子一定都是黑色节点，当我们给一个红色节点下插入一个红色节点时，会违背这条特征。</p>
+<p>因此我们需要在插入黑色节点后进行结构调整，保证红黑树始终满足这 5 条特征。</p>
+<h1 id="调整思想"><a href="#调整思想" class="headerlink" title="调整思想"></a>调整思想</h1><p>前面说了，插入一个节点后要担心违反特征 4 和 5，数学里最常用的一个解题技巧就是把多个未知数化解成一个未知数。我们这里采用同样的技巧，把插入的节点直接染成红色，这样就不会影响特征 5，只要专心调整满足特征 4 就好了。这样比同时满足 4、5 要简单一些。</p>
+<p>染成红色后，我们只要关心父节点是否为红，如果是红的，就要把父节点进行变化，让父节点变成黑色，或者换一个黑色节点当父亲，这些操作的同时不能影响 不同路径上的黑色节点数一致的规则。</p>
+<ul>
+<li>注：插入后我们主要关注插入节点的父亲节点的位置，而父亲节点位于左子树或者右子树的操作是相对称的，这里我们只介绍一种，即插入位置的父亲节点为左子树。</li>
+</ul>
+<h1 id="红黑树的平衡删除"><a href="#红黑树的平衡删除" class="headerlink" title="红黑树的平衡删除"></a>红黑树的平衡删除</h1><p>红黑树的插入平衡需要好好理解下，如果前面没有理解，删除后的调整平衡更加难懂，前方高能，请注意！</p>
+<ul>
+<li><p>红黑树的删除也是分两步：</p>
+<p>二叉查找树的删除<br>结构调整<br>二叉查找树的删除</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/13/矩阵相关理解/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1556,159 +1709,11 @@ git pull
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/05/win下kears安装/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="onion">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://gss0.baidu.com/-Po3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/5882b2b7d0a20cf49a3075d87e094b36acaf9911.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="very cool">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/05/win下kears安装/" itemprop="url">win下keras安装</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-05T21:24:01+08:00">
-                2018-01-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="windows-keras-安装及添加环境变量"><a href="#windows-keras-安装及添加环境变量" class="headerlink" title="windows-keras 安装及添加环境变量"></a>windows-keras 安装及添加环境变量</h1><hr>
-<p>【1】 安装anaconda</p>
-<p>相当于安装了python 以及各种包</p>
-<p>【2】 安装Keras</p>
-<ul>
-<li><p>打开Anaconda Prompt，在命令行中输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install keras</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>安装MinGW</p>
-</li>
-</ul>
-<p>接着上一步，在命令行输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install keras</span><br><span class="line">$$conda install mingw libpython</span><br></pre></td></tr></table></figure></p>
-<p>【3】 接下来呢，开始装theano~三步走</p>
-<ul>
-<li><p>下载theano的zip文件，解压到你电脑的…/Anaconda/Lib/site-packages/theano目录下（注意：如何找到此安装位置：右击anaconda的一个快捷图标，打开文件所在位置，再右击其中一个，打开所在位置，ok），注意：原来这个site-packages里面本身就有一个叫做theano的东西，把它删了！替换成压缩包里的文件，并重命名为theano.</p>
-<ul>
-<li>在原有的path中编辑，添加环境变量: </li>
-</ul>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">C:XXX/Anaconda/MinGW/bin   </span><br><span class="line">C:XXX/Anaconda/MinGW/x86_64-w64-mingw32/lib;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>新建环境变量：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PYTHONPATH: C:XXX/Anaconda/Lib/site-packages/theano;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>如何添加或新建环境变量<br> 控制面板\系统和安全\系统\高级系统设置\环境变量<br> 在第一个框（XX的用户变量中在原有的基础上点击编辑增加‘值’，或者点击新建新增变量和值</p>
-</li>
-</ul>
-<p>【4】 好了，理论上theano也安装成功了，测试一下看~在Anaconda Prompt的命令行中输入“python”，回车，然后输入“import theano”，回车。如果你看到“&gt;&gt;&gt;”三个箭头，没有别的乱七八糟的东西了，就说明：你！安！装！成！功！啦！</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1758,7 +1763,7 @@ git pull
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
